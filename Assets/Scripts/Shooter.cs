@@ -37,7 +37,7 @@ public class Shooter : MonoBehaviour
 
     private IEnumerator TestShoot(GameObject bullet, float time)
     {
-        bullet.GetComponent<Rigidbody>().AddForce(shootingPoint.forward * 50f, ForceMode.Impulse);
+        bullet.GetComponent<Rigidbody>().AddForce(shootingPoint.forward * 30f, ForceMode.Impulse);
 
         yield return new WaitForSeconds(time);
         
@@ -54,7 +54,6 @@ public class Shooter : MonoBehaviour
         {
 
             Vector3 worldPosition = hit.point;
-            Debug.Log("마우스가 가리키는 월드 좌표: " + worldPosition);
             return worldPosition;
         }
         return Vector3.forward;

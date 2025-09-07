@@ -521,7 +521,7 @@ GameObject:
   - component: {fileID: 939588649}
   - component: {fileID: 939588648}
   - component: {fileID: 939588647}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -626,7 +626,7 @@ GameObject:
   - component: {fileID: 1000099494}
   - component: {fileID: 1000099493}
   - component: {fileID: 1000099492}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -731,7 +731,7 @@ GameObject:
   - component: {fileID: 1189484777}
   - component: {fileID: 1189484776}
   - component: {fileID: 1189484775}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Wall (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -873,7 +873,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -941,7 +941,7 @@ GameObject:
   - component: {fileID: 1322771502}
   - component: {fileID: 1322771501}
   - component: {fileID: 1322771500}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1046,7 +1046,7 @@ GameObject:
   - component: {fileID: 1552874321}
   - component: {fileID: 1552874320}
   - component: {fileID: 1552874319}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1179,7 +1179,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1630559450}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
