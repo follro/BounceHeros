@@ -7,9 +7,11 @@ using UnityEngine.InputSystem;
 
 public class Shooter : MonoBehaviour
 {
-    public GameObject projectile;
+    public BaseBullet projectile;
     
     public Transform shootingPoint;
+
+    public float shooterPower;
 
     private void Start()
     {
@@ -25,7 +27,7 @@ public class Shooter : MonoBehaviour
 
         if(mouse.leftButton.wasPressedThisFrame)
         {
-            StartCoroutine(TestShoot(Instantiate(projectile, shootingPoint.position, shootingPoint.rotation), 3));
+            TestFire(Instantiate(projectile, shootingPoint.position, shootingPoint.rotation));
         }
 
         Vector3 dir = (FindMouseWorldPos(mouse) - this.transform.position).normalized;
@@ -35,13 +37,13 @@ public class Shooter : MonoBehaviour
 
     }
 
-    private IEnumerator TestShoot(GameObject bullet, float time)
+    private void TestFire(BaseBullet bullet)
     {
-        bullet.GetComponent<Rigidbody>().AddForce(shootingPoint.forward * 30f, ForceMode.Impulse);
+        Vector3 forward = shootingPoint.forward;
+        forward.y = 0.5f;
+        bullet.Initialize(forward, shooterPower);
 
-        yield return new WaitForSeconds(time);
         
-        Destroy(bullet);
     }
 
     private Vector3 FindMouseWorldPos(Mouse mouse)
