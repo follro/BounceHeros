@@ -19783,9 +19783,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 865351037}
-  - component: {fileID: 865351039}
   - component: {fileID: 865351040}
-  m_Layer: 0
+  - component: {fileID: 865351039}
+  m_Layer: 7
   m_Name: CatchZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19801,8 +19801,8 @@ Transform:
   m_GameObject: {fileID: 865351035}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -10, z: 0}
+  m_LocalScale: {x: 18, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -19819,7 +19819,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b5c79d03ae4deb4b9c92fa51ffe2098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 3952721908864677972, guid: 46b759c64d5fa714db032cd65eb77a28, type: 3}
+  OnScreenTouch:
+    m_Name: On Screen Touch
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: 9ddf9f65-f601-4ebc-9f82-d19d60fe62b3
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: ff8812b8-003a-423c-9d8d-26fea8394c2e
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: On Screen Touch
+      m_Flags: 0
+    m_Flags: 0
+  OnDrag:
+    m_Name: On Drag
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 31c9d0ad-5ca1-44b0-bb52-b15c29e5b456
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  catchAbleLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  mainCamera: {fileID: 880207345}
 --- !u!61 &865351040
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19832,7 +19861,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -19849,7 +19878,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
