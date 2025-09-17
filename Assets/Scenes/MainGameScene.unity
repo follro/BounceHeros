@@ -19791,7 +19791,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &865351037
 Transform:
   m_ObjectHideFlags: 0
@@ -19920,12 +19920,12 @@ MonoBehaviour:
     m_Name: Hold
     m_Type: 1
     m_ExpectedControlType: Button
-    m_Id: cfac13ab-d8dd-4cf5-9007-8dc4666c1090
+    m_Id: 18ab4c47-81d4-4b16-bc06-7fb920c9908d
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 884a020c-d623-41d5-a68c-14b304955b6e
+      m_Id: 1e8e1a3f-25e5-4d7b-bf0f-2d715ac5ecae
       m_Path: <Touchscreen>/Press
       m_Interactions: 
       m_Processors: 
@@ -19933,8 +19933,8 @@ MonoBehaviour:
       m_Action: Hold
       m_Flags: 0
     - m_Name: 
-      m_Id: 64676bd9-c779-480a-98c1-1b1edc650d41
-      m_Path: <Mouse>/leftButton
+      m_Id: 62676b49-7987-4198-905b-8d841dc4792c
+      m_Path: <Mouse>/press
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -20105,6 +20105,87 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &1280797067
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1280797069}
+  - component: {fileID: 1280797068}
+  m_Layer: 0
+  m_Name: TestDragger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1280797068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280797067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e84d19966492264ba042b0034e2e804, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pressAction:
+    m_Name: Press
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: e8435c9c-0c44-45ec-9bc7-2da3cc78106e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: d5a99a3e-9d61-4525-9260-28d06d2c88dd
+      m_Path: <Mouse>/press
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Press
+      m_Flags: 0
+    m_Flags: 0
+  screenPosAction:
+    m_Name: Screen Pos
+    m_Type: 0
+    m_ExpectedControlType: Vector2
+    m_Id: 80db63cf-8af3-4dab-a7e7-fc534b70f77c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: e7bb44aa-46f9-4069-9123-b9d65f34b99d
+      m_Path: <Mouse>/position
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Screen Pos
+      m_Flags: 0
+    m_Flags: 0
+  mainCamera: {fileID: 0}
+  startPos: {x: 0, y: 0}
+  endPos: {x: 0, y: 0}
+--- !u!4 &1280797069
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280797067}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5260024, y: -1.3452702, z: 0.34804094}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1348003932
 GameObject:
   m_ObjectHideFlags: 0
@@ -20264,3 +20345,4 @@ SceneRoots:
   - {fileID: 829998551}
   - {fileID: 617740793}
   - {fileID: 865351037}
+  - {fileID: 1280797069}
