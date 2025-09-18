@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SlingShotController : MonoBehaviour
 {
-    [SerializeField] private SlingShotInputHandler inputHandler;
+    [SerializeField] private DragInputHandler inputHandler;
     [SerializeField] private SlingShotVisualizer visualizer;
 
     private void Awake()
@@ -16,7 +16,7 @@ public class SlingShotController : MonoBehaviour
         }
 
         inputHandler.OnDragging += HandleDragging;
-        inputHandler.OnDragEnd += HandleDragEnd;
+        inputHandler.OnDragEnded += HandleDragEnd;
     }
 
     private void OnDestroy()
@@ -24,17 +24,16 @@ public class SlingShotController : MonoBehaviour
         if (inputHandler != null)
         {
             inputHandler.OnDragging -= HandleDragging;
-            inputHandler.OnDragEnd -= HandleDragEnd;
+            inputHandler.OnDragEnded -= HandleDragEnd;
         }
     }
 
     private void HandleDragging(Vector2 startPos, Vector2 currentPos)
     {
-        if (inputHandler.IsDragValid)
-        {
-            visualizer.ShowAimLine();
-            visualizer.UpdateAimLine(startPos, currentPos);
-        }
+        
+         visualizer.ShowAimLine();
+         visualizer.UpdateAimLine(startPos, currentPos);
+        
     }
 
     private void HandleDragEnd(Vector2 startPos, Vector2 endPos)

@@ -1,14 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 
 public class SlingShotVisualizer : MonoBehaviour
 {
     [SerializeField] private LineRenderer aimLine;
     [Range(0f, 5f)][SerializeField] private float lineValue;
+
+    [SerializeField] private LayerMask reflectableLayer;
+    [SerializeField] private List<Vector2> reflectPositions;
+
     private void Awake()
     {
         if (aimLine == null) aimLine = GetComponent<LineRenderer>();
+        reflectPositions = new List<Vector2>();
+        
     }
 
     public void ShowAimLine()
@@ -21,24 +28,53 @@ public class SlingShotVisualizer : MonoBehaviour
         aimLine.enabled = false;
     }
 
-    public void UpdateAimLine(Vector2 startPos, Vector2 currentPos)
+    public void UpdateAimLine(Vector2 startPosition, Vector2 currentDragVector)
     {
-        Vector3 startScreenPosWithZ = new Vector3(startPos.x, startPos.y, 0);
-        Vector3 currentScreenPosWithZ = new Vector3(currentPos.x, currentPos.y, 0);
+        //start
+        Vector2 endPosition = startPosition - currentDragVector;
+        Vector2 endVector = endPosition - startPosition;
+        float length = endVector.magnitude;
 
-        // 월드 좌표로 변환
-        Vector3 startWorldPos = Camera.main.ScreenToWorldPoint(startScreenPosWithZ);
-        Vector3 currentWorldPos = Camera.main.ScreenToWorldPoint(currentScreenPosWithZ);
+        CalculateReflectVectors(startPosition, endVector.normalized, length);
 
-        // 드래그 벡터 계산 (시작점 - 현재점)
-        Vector2 dragVector = new Vector2(startWorldPos.x - currentWorldPos.x, startWorldPos.y - currentWorldPos.y);
+        aimLine.positionCount = reflectPositions.Count;
 
-        // 라인 끝점 계산 (배율 적용)
-        Vector3 endWorldPos = startWorldPos + new Vector3(dragVector.x, dragVector.y, 0) * lineValue;
-
-        // 라인 렌더러에 위치 설정
-        aimLine.positionCount = 2;
-        aimLine.SetPosition(0, startWorldPos);
-        aimLine.SetPosition(1, endWorldPos);
+        for (int i = 0; i < reflectPositions.Count; i++)
+            aimLine.SetPosition(i, new Vector3(reflectPositions[i].x, reflectPositions[i].y, -1));
     }
+
+    private void CalculateReflectVectors(Vector2 origin, Vector2 direction, float totalLength)
+    {
+        reflectPositions.Clear();
+        reflectPositions.Add(origin);
+
+        Vector2 currentPosition = origin;
+        Vector2 currentDirection = direction.normalized;
+        float remainingLength = totalLength;
+        int maxBounces = 5;
+
+
+        for(int i = 0; i < maxBounces; i++)
+        {
+            RaycastHit2D hit = Physics2D.Raycast(currentPosition, currentDirection, remainingLength, reflectableLayer);
+
+            if (hit.collider != null) 
+            {
+                reflectPositions.Add(hit.point);
+                remainingLength -= hit.distance;
+
+                Vector2 reflectedDirection = Vector2.Reflect(currentDirection, hit.normal);
+                currentPosition = hit.point + reflectedDirection * 0.001f;
+                currentDirection = reflectedDirection;
+            }
+            else 
+            {
+                reflectPositions.Add(currentPosition + currentDirection * remainingLength);
+                break;
+            }
+        }
+    }
+    
+
+
 }
