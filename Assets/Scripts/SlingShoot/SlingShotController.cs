@@ -2,44 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlingShotController : MonoBehaviour
+namespace BounceHeros
 {
-    [SerializeField] private DragInputHandler inputHandler;
-    [SerializeField] private SlingShotVisualizer visualizer;
-
-    private void Awake()
+    public class SlingShotController : MonoBehaviour
     {
-        if (inputHandler == null || visualizer == null)
+        [SerializeField] private DragInputHandler inputHandler;
+        [SerializeField] private SlingShotVisualizer visualizer;
+
+        private void Awake()
         {
-            Debug.LogError("InputHandler 또는 Visualizer가 연결되지 않았습니다.");
-            return;
+            if (inputHandler == null || visualizer == null)
+            {
+                Debug.LogError("InputHandler 또는 Visualizer가 연결되지 않았습니다.");
+                return;
+            }
+
+            inputHandler.OnDragging += HandleDragging;
+            inputHandler.OnDragEnded += HandleDragEnd;
         }
 
-        inputHandler.OnDragging += HandleDragging;
-        inputHandler.OnDragEnded += HandleDragEnd;
-    }
-
-    private void OnDestroy()
-    {
-        if (inputHandler != null)
+        private void OnDestroy()
         {
-            inputHandler.OnDragging -= HandleDragging;
-            inputHandler.OnDragEnded -= HandleDragEnd;
+            if (inputHandler != null)
+            {
+                inputHandler.OnDragging -= HandleDragging;
+                inputHandler.OnDragEnded -= HandleDragEnd;
+            }
         }
+
+        private void HandleDragging(Vector2 startPos, Vector2 currentPos)
+        {
+
+            visualizer.ShowAimLine();
+            visualizer.UpdateAimLine(startPos, currentPos);
+
+        }
+
+        private void HandleDragEnd(Vector2 startPos, Vector2 endPos)
+        {
+            visualizer.HideAimLine();
+
+        }
+
     }
-
-    private void HandleDragging(Vector2 startPos, Vector2 currentPos)
-    {
-        
-         visualizer.ShowAimLine();
-         visualizer.UpdateAimLine(startPos, currentPos);
-        
-    }
-
-    private void HandleDragEnd(Vector2 startPos, Vector2 endPos)
-    {
-        visualizer.HideAimLine();
-
-    }
-
 }
