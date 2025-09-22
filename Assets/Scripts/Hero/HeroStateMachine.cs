@@ -10,7 +10,7 @@ namespace BounceHeros
         #region StateSetting
         public enum HeroState
         {
-            IdleState,
+            Idle,
             Catched,
             Rush,
             Dead,
@@ -52,11 +52,12 @@ namespace BounceHeros
             pendingStateType = HeroState.End;
 
             states = new StateEnumArray((int)HeroState.End);
+            states[HeroState.Idle] = new IdleState(hero, this);
             states[HeroState.Catched] = new CatchedState(hero, this);
-            /*states[HeroState.Rush] = new RushState(hero, this);
-            states[HeroState.Bounceable] = new IdleState(hero, this);
-            states[HeroState.Dead] = new DeadState(hero, this);*/
+            states[HeroState.Rush] = new RushState(hero, this);
 
+            TransitionTo(HeroState.Idle);
+            //states[HeroState.Dead] = new DeadState(hero, this);*/
 
         }
 
@@ -87,6 +88,6 @@ namespace BounceHeros
             }
         }
 
-        public void StateOnCollisionEnter(Collision collision) => currentState?.OnCollisionEnter(collision); 
+        public void StateOnCollisionEnter(Collision2D collision) => currentState?.OnCollisionEnter(collision); 
     }
 }

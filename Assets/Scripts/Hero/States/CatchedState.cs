@@ -32,7 +32,7 @@ namespace BounceHeros
             base.FixedUpdate();
         }
 
-        public override void OnCollisionEnter(Collision collision)
+        public override void OnCollisionEnter(Collision2D collision)
         {
             base.OnCollisionEnter(collision);
         }

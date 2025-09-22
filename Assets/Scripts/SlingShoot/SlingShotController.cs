@@ -8,6 +8,7 @@ namespace BounceHeros
     {
         [SerializeField] private DragInputHandler inputHandler;
         [SerializeField] private SlingShotVisualizer visualizer;
+        [SerializeField] private HeroCatcher heroCatcher;
 
         private void Awake()
         {
@@ -32,16 +33,25 @@ namespace BounceHeros
 
         private void HandleDragging(Vector2 startPos, Vector2 currentPos)
         {
+            if (heroCatcher == null) return;
+
+
+            Vector3 heroWorldPos = heroCatcher.Hero.transform.position;
+            Vector2 heroScreenPos = Camera.main.WorldToScreenPoint(heroWorldPos);
+
+            Vector2 dragVector = currentPos - startPos;
+            Vector2 aimEndPoint = heroScreenPos - dragVector;
 
             visualizer.ShowAimLine();
-            visualizer.UpdateAimLine(startPos, currentPos);
+            visualizer.UpdateAimLine(heroScreenPos, aimEndPoint);
 
         }
 
         private void HandleDragEnd(Vector2 startPos, Vector2 endPos)
         {
+            if (heroCatcher == null) return;
+            
             visualizer.HideAimLine();
-
         }
 
     }

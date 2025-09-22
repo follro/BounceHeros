@@ -31,7 +31,7 @@ namespace BounceHeros
 
         public virtual void LateUpdate() { }
 
-        public virtual void OnCollisionEnter(Collision collision)
+        public virtual void OnCollisionEnter(Collision2D collision)
         {
             Debug.Log($"<color=green>{hero.name}</color> CollisionEnter. Current State: {this.GetType().Name}");
         }
