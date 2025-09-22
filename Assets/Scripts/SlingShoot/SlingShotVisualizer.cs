@@ -31,7 +31,7 @@ namespace BounceHeros
             aimLine.enabled = false;
         }
 
-        public void UpdateAimLine(Vector2 startPosition, Vector2 currentDragVector)
+        /*public void UpdateAimLine(Vector2 startPosition, Vector2 currentDragVector)
         {
             Vector2 endPosition = startPosition - currentDragVector;
             Vector2 endVector = endPosition - startPosition;
@@ -43,8 +43,21 @@ namespace BounceHeros
 
             for (int i = 0; i < reflectPositions.Count; i++)
                 aimLine.SetPosition(i, new Vector3(reflectPositions[i].x, reflectPositions[i].y, 0));
-        }
+        }*/
 
+        public void UpdateAimLine(Vector2 worldOrigin, Vector2 worldDirection, float totalLength)
+        {
+            // 이제 origin, direction, length는 모두 월드 좌표 기준이므로 바로 사용 가능
+            CalculateReflectVectors(worldOrigin, worldDirection, totalLength);
+
+            aimLine.positionCount = reflectPositions.Count;
+
+            for (int i = 0; i < reflectPositions.Count; i++)
+            {
+                // reflectPositions에 이미 월드 좌표가 들어있으므로 변환 불필요
+                aimLine.SetPosition(i, reflectPositions[i]);
+            }
+        }
         private void CalculateReflectVectors(Vector2 origin, Vector2 direction, float totalLength)
         {
             reflectPositions.Clear();

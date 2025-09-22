@@ -13,6 +13,8 @@ namespace BounceHeros
         public override void Enter()
         {
             base.Enter();
+            hero.Rigid2D.velocity = Vector2.zero;
+            hero.Rigid2D.angularVelocity = 0f; 
             hero.Rigid2D.isKinematic = true;
         }
 

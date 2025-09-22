@@ -10,6 +10,8 @@ namespace BounceHeros
         [SerializeField] private SlingShotVisualizer visualizer;
         [SerializeField] private HeroCatcher heroCatcher;
 
+        [SerializeField] private float launchPowerMultiplier = 0.1f;
+        [SerializeField] private Camera mainCamera;
         private void Awake()
         {
             if (inputHandler == null || visualizer == null)
@@ -17,6 +19,7 @@ namespace BounceHeros
                 Debug.LogError("InputHandler 또는 Visualizer가 연결되지 않았습니다.");
                 return;
             }
+            if (mainCamera == null) mainCamera = Camera.main;
 
             inputHandler.OnDragging += HandleDragging;
             inputHandler.OnDragEnded += HandleDragEnd;
@@ -31,27 +34,49 @@ namespace BounceHeros
             }
         }
 
-        private void HandleDragging(Vector2 startPos, Vector2 currentPos)
-        {
-            if (heroCatcher == null) return;
 
+        private void HandleDragging(Vector2 startScreenPos, Vector2 currentScreenPos)
+        {
+            if (heroCatcher.Hero == null) return;
+
+            heroCatcher.Catch();
 
             Vector3 heroWorldPos = heroCatcher.Hero.transform.position;
-            Vector2 heroScreenPos = Camera.main.WorldToScreenPoint(heroWorldPos);
+            Vector2 heroScreenPos = mainCamera.WorldToScreenPoint(heroWorldPos);
+            Vector2 dragVector = currentScreenPos - startScreenPos;
+            Vector2 aimEndPointScreenPos = heroScreenPos - dragVector;
 
-            Vector2 dragVector = currentPos - startPos;
-            Vector2 aimEndPoint = heroScreenPos - dragVector;
+            float cameraZ = mainCamera.transform.position.z;
+            Vector3 lineStartWorldPos = mainCamera.ScreenToWorldPoint(new Vector3(heroScreenPos.x, heroScreenPos.y, -cameraZ));
+            Vector3 lineEndWorldPos = mainCamera.ScreenToWorldPoint(new Vector3(aimEndPointScreenPos.x, aimEndPointScreenPos.y, -cameraZ));
 
             visualizer.ShowAimLine();
-            visualizer.UpdateAimLine(heroScreenPos, aimEndPoint);
 
+            Vector2 worldDirection = (lineEndWorldPos - lineStartWorldPos).normalized;
+            float worldLength = Vector2.Distance(lineStartWorldPos, lineEndWorldPos);
+            visualizer.UpdateAimLine(lineStartWorldPos, worldDirection, worldLength);
         }
 
-        private void HandleDragEnd(Vector2 startPos, Vector2 endPos)
+        //private void HandleDragEnd(Vector2 startPos, Vector2 endPos)
+        private void HandleDragEnd(Vector2 startScreenPos, Vector2 endScreenPos)
         {
-            if (heroCatcher == null) return;
-            
+            if (heroCatcher.Hero == null) return;
+
             visualizer.HideAimLine();
+
+            Vector3 heroWorldPos = heroCatcher.Hero.transform.position;
+            Vector2 heroScreenPos = mainCamera.WorldToScreenPoint(heroWorldPos);
+            Vector2 aimVectorScreen = heroScreenPos - endScreenPos; // 조준 방향 (스크린)
+
+            Vector3 launchStartWorldPos = heroWorldPos;
+            Vector3 launchEndWorldPos = mainCamera.ScreenToWorldPoint(new Vector3(endScreenPos.x, endScreenPos.y, -mainCamera.transform.position.z));
+
+            Vector2 launchVectorWorld = launchStartWorldPos - launchEndWorldPos;
+            
+            Vector2 launchDirection = launchVectorWorld.normalized;
+            float launchDistance = launchVectorWorld.magnitude;
+
+            heroCatcher.Shoot(launchDirection, launchDistance * launchPowerMultiplier);
         }
 
     }

@@ -13,13 +13,13 @@ public class DragInputHandler : MonoBehaviour
     [Header("Input")]
     [SerializeField] private InputAction pressAction, screenPosAction;
 
-    [SerializeField] private Camera mainCamera;
+    //[SerializeField] private Camera mainCamera;
     
     [SerializeField] private Vector2 startPos, endPos;
 
     private void Awake()
     {
-        if(mainCamera == null)  mainCamera = Camera.main;   
+        //if(mainCamera == null)  mainCamera = Camera.main;   
         InitializedPos();
     }
 
@@ -52,14 +52,16 @@ public class DragInputHandler : MonoBehaviour
     {
         if (pressAction.IsPressed())
         {
-            endPos = mainCamera.ScreenToWorldPoint(context.ReadValue<Vector2>());
+            //endPos = mainCamera.ScreenToWorldPoint(context.ReadValue<Vector2>());
+            endPos = context.ReadValue<Vector2>();
             OnDragging?.Invoke(startPos, endPos);
         }
     }
 
     private void OnPressStarted(InputAction.CallbackContext context)
     {
-        startPos = mainCamera.ScreenToWorldPoint(screenPosAction.ReadValue<Vector2>());    
+        //startPos = mainCamera.ScreenToWorldPoint(screenPosAction.ReadValue<Vector2>());    
+        startPos = screenPosAction.ReadValue<Vector2>();
         OnDragStarted?.Invoke(startPos);
     }
 

@@ -54,11 +54,13 @@ namespace BounceHeros
 
         private void HandleReflection(Collision2D collision)
         {
-            Vector2 normal = collision.contacts[0].normal;
+            /*Vector2 normal = collision.contacts[0].normal;
 
             Vector2 reflectDirection = Vector2.Reflect(lastVelocity.normalized, normal);
 
-            hero.Rigid2D.velocity = reflectDirection * hero.RushSpeed;
+            hero.Rigid2D.velocity = reflectDirection * hero.RushSpeed;*/
+
+            stateMachine.RequestTransition(HeroStateMachine.HeroState.Idle);
         }
     }
 }
