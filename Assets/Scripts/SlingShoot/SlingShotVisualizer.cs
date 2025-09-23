@@ -11,6 +11,7 @@ namespace BounceHeros
         [SerializeField] private LineRenderer aimLine;
         [Range(0f, 5f)][SerializeField] private float lineValue;
 
+        [SerializeField] private int maxReflectLineNum;
         [SerializeField] private LayerMask reflectableLayer;
         [SerializeField] private List<Vector2> reflectPositions;
 
@@ -31,23 +32,8 @@ namespace BounceHeros
             aimLine.enabled = false;
         }
 
-        /*public void UpdateAimLine(Vector2 startPosition, Vector2 currentDragVector)
-        {
-            Vector2 endPosition = startPosition - currentDragVector;
-            Vector2 endVector = endPosition - startPosition;
-            float length = endVector.magnitude;
-
-            CalculateReflectVectors(startPosition, endVector.normalized, length);
-
-            aimLine.positionCount = reflectPositions.Count;
-
-            for (int i = 0; i < reflectPositions.Count; i++)
-                aimLine.SetPosition(i, new Vector3(reflectPositions[i].x, reflectPositions[i].y, 0));
-        }*/
-
         public void UpdateAimLine(Vector2 worldOrigin, Vector2 worldDirection, float totalLength)
         {
-            // 이제 origin, direction, length는 모두 월드 좌표 기준이므로 바로 사용 가능
             CalculateReflectVectors(worldOrigin, worldDirection, totalLength);
 
             aimLine.positionCount = reflectPositions.Count;
@@ -66,10 +52,9 @@ namespace BounceHeros
             Vector2 currentPosition = origin;
             Vector2 currentDirection = direction.normalized;
             float remainingLength = totalLength;
-            int maxBounces = 5;
 
 
-            for (int i = 0; i < maxBounces; i++)
+            for (int i = 0; i < maxReflectLineNum; i++)
             {
                 RaycastHit2D hit = Physics2D.Raycast(currentPosition, currentDirection, remainingLength, reflectableLayer);
 

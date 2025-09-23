@@ -57,7 +57,6 @@ namespace BounceHeros
             visualizer.UpdateAimLine(lineStartWorldPos, worldDirection, worldLength);
         }
 
-        //private void HandleDragEnd(Vector2 startPos, Vector2 endPos)
         private void HandleDragEnd(Vector2 startScreenPos, Vector2 endScreenPos)
         {
             if (heroCatcher.Hero == null) return;

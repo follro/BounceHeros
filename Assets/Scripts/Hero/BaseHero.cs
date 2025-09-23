@@ -10,18 +10,20 @@ namespace BounceHeros
         [SerializeField] private LayerMask hitableLayerMask;
         [SerializeField] private float maxHP;
         [SerializeField] private float hp;
+        [SerializeField] private int rushableCount;
 
         private HeroStateMachine stateMachine;
         public event Action<float> OnHitEvent;
 
         #region Property
+        public Rigidbody2D Rigid2D { get; private set; }
         float IHitable.MaxHP { get => maxHP; }
         float IHitable.HP { get => hp; }
-        public Rigidbody2D Rigid2D { get; private set; }
         public float MinSpeed { get; private set; }
         public float RushSpeed { get; private set; }
+        public Vector2 RushDirection { get; private set; }
+        public int RushableCount { get => rushableCount; }  
 
-        public Vector2 RushDirection { get; set; }
         public LayerMask HitableLayerMask { get => hitableLayerMask; }
 
        event Action<float> IHitable.OnHitEvent
@@ -46,7 +48,8 @@ namespace BounceHeros
             stateMachine = new HeroStateMachine(this);
             hp = maxHP;
 
-            MinSpeed = 10; // 임시 값
+            //임시 값 들
+            MinSpeed = 10;
         }
 
         private void Update() => stateMachine.Update();

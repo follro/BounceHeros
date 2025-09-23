@@ -347,6 +347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimLine: {fileID: 0}
   lineValue: 3
+  maxReflectLineNum: 2
   reflectableLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -702,6 +703,7 @@ MonoBehaviour:
     m_Bits: 0
   maxHP: 100
   hp: 0
+  rushableCount: 100
 --- !u!1001 &999680576
 PrefabInstance:
   m_ObjectHideFlags: 0
