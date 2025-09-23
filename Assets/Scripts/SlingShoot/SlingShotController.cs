@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace BounceHeros
@@ -10,8 +11,13 @@ namespace BounceHeros
         [SerializeField] private SlingShotVisualizer visualizer;
         [SerializeField] private HeroCatcher heroCatcher;
 
-        [SerializeField] private float launchPowerMultiplier = 0.1f;
+        [SerializeField] private float launchPowerMultiplier;
         [SerializeField] private Camera mainCamera;
+
+        private bool isAiming;
+        private Vector2 finalLaunchDirection;
+        private float finalLaunchPower;
+
         private void Awake()
         {
             if (inputHandler == null || visualizer == null)
@@ -21,8 +27,10 @@ namespace BounceHeros
             }
             if (mainCamera == null) mainCamera = Camera.main;
 
+            inputHandler.OnDragStarted += HandleDragStart;
             inputHandler.OnDragging += HandleDragging;
             inputHandler.OnDragEnded += HandleDragEnd;
+            isAiming = false;
         }
 
         private void OnDestroy()
@@ -34,10 +42,16 @@ namespace BounceHeros
             }
         }
 
+        private void HandleDragStart()
+        {
+            if (heroCatcher.Hero == null) return;
+
+            isAiming = true;    
+        }
 
         private void HandleDragging(Vector2 startScreenPos, Vector2 currentScreenPos)
         {
-            if (heroCatcher.Hero == null) return;
+            if (heroCatcher.Hero == null || !isAiming) return;
 
             heroCatcher.Catch();
 
@@ -55,27 +69,21 @@ namespace BounceHeros
             Vector2 worldDirection = (lineEndWorldPos - lineStartWorldPos).normalized;
             float worldLength = Vector2.Distance(lineStartWorldPos, lineEndWorldPos);
             visualizer.UpdateAimLine(lineStartWorldPos, worldDirection, worldLength);
+
+            finalLaunchDirection = worldDirection;
+            finalLaunchPower = worldLength * launchPowerMultiplier;
+            //Debug.DrawRay(lineStartWorldPos, worldDirection * 5f, Color.green);
         }
 
-        private void HandleDragEnd(Vector2 startScreenPos, Vector2 endScreenPos)
+        private void HandleDragEnd()
         {
-            if (heroCatcher.Hero == null) return;
+            if (heroCatcher.Hero == null || !isAiming) return;
 
+            isAiming = false;
             visualizer.HideAimLine();
-
-            Vector3 heroWorldPos = heroCatcher.Hero.transform.position;
-            Vector2 heroScreenPos = mainCamera.WorldToScreenPoint(heroWorldPos);
-            Vector2 aimVectorScreen = heroScreenPos - endScreenPos; // 조준 방향 (스크린)
-
-            Vector3 launchStartWorldPos = heroWorldPos;
-            Vector3 launchEndWorldPos = mainCamera.ScreenToWorldPoint(new Vector3(endScreenPos.x, endScreenPos.y, -mainCamera.transform.position.z));
-
-            Vector2 launchVectorWorld = launchStartWorldPos - launchEndWorldPos;
-            
-            Vector2 launchDirection = launchVectorWorld.normalized;
-            float launchDistance = launchVectorWorld.magnitude;
-
-            heroCatcher.Shoot(launchDirection, launchDistance * launchPowerMultiplier);
+            Debug.DrawRay(heroCatcher.Hero.transform.position, finalLaunchDirection * 5f, Color.red, 5f);
+            heroCatcher.Launch(finalLaunchDirection, finalLaunchPower);
+           
         }
 
     }

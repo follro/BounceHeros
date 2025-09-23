@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace BounceHeros
@@ -17,6 +18,7 @@ namespace BounceHeros
 
         #region Property
         public Rigidbody2D Rigid2D { get; private set; }
+        public HeroStateMachine.HeroState CurrentState => stateMachine.CurrentStateType;
         float IHitable.MaxHP { get => maxHP; }
         float IHitable.HP { get => hp; }
         public float MinSpeed { get; private set; }

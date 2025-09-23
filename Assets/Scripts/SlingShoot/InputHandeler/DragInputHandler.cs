@@ -6,20 +6,17 @@ using UnityEngine.InputSystem;
 
 public class DragInputHandler : MonoBehaviour
 {
-    public event Action<Vector2> OnDragStarted;
+    public event Action OnDragStarted;
     public event Action<Vector2, Vector2> OnDragging;
-    public event Action<Vector2, Vector2> OnDragEnded;
+    public event Action OnDragEnded;
 
     [Header("Input")]
     [SerializeField] private InputAction pressAction, screenPosAction;
 
-    //[SerializeField] private Camera mainCamera;
-    
     [SerializeField] private Vector2 startPos, endPos;
 
     private void Awake()
     {
-        //if(mainCamera == null)  mainCamera = Camera.main;   
         InitializedPos();
     }
 
@@ -52,7 +49,6 @@ public class DragInputHandler : MonoBehaviour
     {
         if (pressAction.IsPressed())
         {
-            //endPos = mainCamera.ScreenToWorldPoint(context.ReadValue<Vector2>());
             endPos = context.ReadValue<Vector2>();
             OnDragging?.Invoke(startPos, endPos);
         }
@@ -60,14 +56,13 @@ public class DragInputHandler : MonoBehaviour
 
     private void OnPressStarted(InputAction.CallbackContext context)
     {
-        //startPos = mainCamera.ScreenToWorldPoint(screenPosAction.ReadValue<Vector2>());    
         startPos = screenPosAction.ReadValue<Vector2>();
-        OnDragStarted?.Invoke(startPos);
+        OnDragStarted?.Invoke();
     }
 
     private void OnPressEnded(InputAction.CallbackContext context)
     {
-        OnDragEnded?.Invoke(startPos, endPos);
+        OnDragEnded?.Invoke();
         InitializedPos();
     }
 

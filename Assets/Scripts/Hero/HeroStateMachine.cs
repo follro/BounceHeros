@@ -41,6 +41,7 @@ namespace BounceHeros
         }
         #endregion
 
+        public HeroState CurrentStateType { get; private set; }
         private StateEnumArray states;
         private BaseHeroState currentState;
         private BaseHeroState nextState;
@@ -73,6 +74,8 @@ namespace BounceHeros
             currentState?.Exit();
             currentState = states[nextStateType];
             currentState?.Enter();
+
+            CurrentStateType = nextStateType;
         }
 
         public void Update() =>  currentState?.Update();

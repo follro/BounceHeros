@@ -29,6 +29,6 @@ namespace BounceHeros
 
         public void Catch() => Hero?.Catched();
 
-        public void Shoot(Vector2 direction, float forceAmount) => Hero?.Rush(direction, forceAmount);
+        public void Launch(Vector2 direction, float forceAmount) => Hero?.Rush(direction, forceAmount);
     }
 }
