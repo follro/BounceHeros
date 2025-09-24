@@ -19,7 +19,7 @@ namespace BounceHeros
 
         public virtual void Enter()
         {
-            Debug.Log($"<color=green>{hero.name}</color> Enter. Current State: {this.GetType().Name}");
+            Debug.Log($"{hero.name} <color=green>Enter</color>. Current State: <color=yellow>{this.GetType().Name}</color>.");
             
         }
 
@@ -33,7 +33,7 @@ namespace BounceHeros
 
         public virtual void OnCollisionEnter(Collision2D collision)
         {
-            Debug.Log($"<color=green>{hero.name}</color> CollisionEnter. Current State: {this.GetType().Name}");
+            Debug.Log($"{hero.name} <color=yellow>CollisionEnter</color>. Current State: <color=yellow>{this.GetType().Name}</color>");
         }
 
     }

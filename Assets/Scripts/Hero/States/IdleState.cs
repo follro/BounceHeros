@@ -29,10 +29,12 @@ namespace BounceHeros
 
             int layer = collision.gameObject.layer;
 
-            if (((hero.HitableLayerMask.value & (1 << layer)) > 0) &&
-                collision.gameObject.TryGetComponent<IHitable>(out IHitable hitable))
+            if (((hero.HitableLayerMask.value & (1 << layer)) > 0) )
             {
-                HandleIHitableCollision(hitable);
+                if(collision.gameObject.TryGetComponent<IHitable>(out IHitable hitable))
+                    HandleIHitableCollision(hitable);
+                if (collision.gameObject.TryGetComponent<IAttackable>(out IAttackable attackable))
+                    HandleIAttackableCollision(attackable, collision.transform.position);
             }
         }
 
@@ -40,5 +42,17 @@ namespace BounceHeros
         {
             hero.Attack(enemy);
         }
+        private void HandleIAttackableCollision(IAttackable enemy, Vector3 enemyPos)
+        {
+            Vector3 heroPos = hero.transform.position;
+
+            Vector2 knockbackDirection = (heroPos - enemyPos).normalized;
+
+            Vector2 powerVector = knockbackDirection * enemy.AttackDamage;
+
+            hero.Rigid2D.AddForce(powerVector, ForceMode2D.Impulse);
+        }
+
+
     }
 }

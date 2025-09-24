@@ -58,9 +58,8 @@ namespace BounceHeros
             {
                 HandleIHitableCollision(hitable);
             }
-            else // Hitable이 아닌 일반 벽 등과 부딪혔을 때
+            else 
             {
-                // 남은 Rush 횟수만 감소시키고, Idle 상태로 전환할지 결정
                 currentRushableCount--;
                 if (currentRushableCount <= 0)
                 {
