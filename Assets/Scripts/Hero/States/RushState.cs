@@ -71,24 +71,9 @@ namespace BounceHeros
 
         private void HandleIHitableCollision(IHitable enemy)
         {
-            enemy.OnHit(10);// 나중에 데미지 넣어줘야됨
+            hero.Attack(enemy);
         }
 
-        /*private void HandleReflection(Collision2D collision)
-        {
-            if (currentRushableCount <= 0)
-            {
-                stateMachine.RequestTransition(HeroStateMachine.HeroState.Idle);
-                return;
-            }
-
-            currentRushableCount--;
-
-            Vector2 reflectDirection = Vector2.Reflect(hero.Rigid2D.velocity.normalized, collision.contacts[0].normal);
-
-            hero.Rigid2D.velocity = reflectDirection * hero.RushSpeed;
-
-            currentRushDirection = reflectDirection;
-        }*/
+     
     }
 }

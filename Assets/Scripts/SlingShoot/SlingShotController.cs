@@ -7,16 +7,18 @@ namespace BounceHeros
 {
     public class SlingShotController : MonoBehaviour
     {
+        [SerializeField] private Camera mainCamera;
+        [SerializeField] private float maxLength;
+        
+        [Header("Slingshot Components")]
         [SerializeField] private DragInputHandler inputHandler;
         [SerializeField] private SlingShotVisualizer visualizer;
         [SerializeField] private HeroCatcher heroCatcher;
 
-        [SerializeField] private float launchPowerMultiplier;
-        [SerializeField] private Camera mainCamera;
 
         private bool isAiming;
-        private Vector2 finalLaunchDirection;
         private float finalLaunchPower;
+        private Vector2 finalLaunchDirection;
 
         private void Awake()
         {
@@ -46,7 +48,7 @@ namespace BounceHeros
         {
             if (heroCatcher.Hero == null) return;
 
-            isAiming = true;    
+            isAiming = true;
         }
 
         private void HandleDragging(Vector2 startScreenPos, Vector2 currentScreenPos)
@@ -64,15 +66,15 @@ namespace BounceHeros
             Vector3 lineStartWorldPos = mainCamera.ScreenToWorldPoint(new Vector3(heroScreenPos.x, heroScreenPos.y, -cameraZ));
             Vector3 lineEndWorldPos = mainCamera.ScreenToWorldPoint(new Vector3(aimEndPointScreenPos.x, aimEndPointScreenPos.y, -cameraZ));
 
-            visualizer.ShowAimLine();
 
             Vector2 worldDirection = (lineEndWorldPos - lineStartWorldPos).normalized;
-            float worldLength = Vector2.Distance(lineStartWorldPos, lineEndWorldPos);
+            float worldLength = Mathf.Min(Vector2.Distance(lineStartWorldPos, lineEndWorldPos), maxLength);
+
             visualizer.UpdateAimLine(lineStartWorldPos, worldDirection, worldLength);
+            visualizer.ShowAimLine();
 
             finalLaunchDirection = worldDirection;
-            finalLaunchPower = worldLength * launchPowerMultiplier;
-            //Debug.DrawRay(lineStartWorldPos, worldDirection * 5f, Color.green);
+            finalLaunchPower = worldLength;
         }
 
         private void HandleDragEnd()
@@ -81,7 +83,6 @@ namespace BounceHeros
 
             isAiming = false;
             visualizer.HideAimLine();
-            Debug.DrawRay(heroCatcher.Hero.transform.position, finalLaunchDirection * 5f, Color.red, 5f);
             heroCatcher.Launch(finalLaunchDirection, finalLaunchPower);
            
         }

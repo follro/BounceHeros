@@ -22,5 +22,23 @@ namespace BounceHeros
                 hero.transform.position = new Vector3(0,8,0);   
             }
         }
+
+        public override void OnCollisionEnter(Collision2D collision)
+        {
+            base.OnCollisionEnter(collision);
+
+            int layer = collision.gameObject.layer;
+
+            if (((hero.HitableLayerMask.value & (1 << layer)) > 0) &&
+                collision.gameObject.TryGetComponent<IHitable>(out IHitable hitable))
+            {
+                HandleIHitableCollision(hitable);
+            }
+        }
+
+        private void HandleIHitableCollision(IHitable enemy)
+        {
+            hero.Attack(enemy);
+        }
     }
 }
