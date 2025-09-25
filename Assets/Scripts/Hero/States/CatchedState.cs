@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace BounceHeros
 {
@@ -13,7 +12,7 @@ namespace BounceHeros
         public override void Enter()
         {
             base.Enter();
-            hero.Rigid2D.velocity = Vector2.zero;
+            hero.Rigid2D.velocity = UnityEngine.Vector2.zero;
             hero.Rigid2D.angularVelocity = 0f; 
             hero.Rigid2D.isKinematic = true;
         }
@@ -34,7 +33,7 @@ namespace BounceHeros
             base.FixedUpdate();
         }
 
-        public override void OnCollisionEnter(Collision2D collision)
+        public override void OnCollisionEnter(UnityEngine.Collision2D collision)
         {
             base.OnCollisionEnter(collision);
         }

@@ -11,16 +11,16 @@ namespace BounceHeros
         {
         }
 
+        public override void Exit()
+        {
+            base.Exit();
+            hero.HeroAnimator.SetBool("IsHit", false); //임시
+
+        }
+
         public override void Update()
         {
             base.Update();
-
-            //임시 코드
-            if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
-            {
-                hero.Rigid2D.velocity = new Vector2(0, 0);
-                hero.transform.position = new Vector3(0,8,0);   
-            }
         }
 
         public override void OnCollisionEnter(Collision2D collision)
@@ -28,6 +28,7 @@ namespace BounceHeros
             base.OnCollisionEnter(collision);
 
             int layer = collision.gameObject.layer;
+            hero.HeroAnimator.SetBool("IsHit", false); //임시
 
             if (((hero.HitableLayerMask.value & (1 << layer)) > 0) )
             {
@@ -41,6 +42,7 @@ namespace BounceHeros
         private void HandleIHitableCollision(IHitable enemy)
         {
             hero.Attack(enemy);
+            hero.HeroAnimator.SetBool("IsHit", true); // 임시 
         }
         private void HandleIAttackableCollision(IAttackable enemy, Vector3 enemyPos)
         {

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEngine;
 
 namespace BounceHeros
 {
@@ -13,6 +12,7 @@ namespace BounceHeros
             Idle,
             Catched,
             Rush,
+            Hit,
             Dead,
 
             End
@@ -56,6 +56,8 @@ namespace BounceHeros
             states[HeroState.Idle] = new IdleState(hero, this);
             states[HeroState.Catched] = new CatchedState(hero, this);
             states[HeroState.Rush] = new RushState(hero, this);
+            states[HeroState.Hit] = new HitState(hero, this);
+
 
             TransitionTo(HeroState.Idle);
             //states[HeroState.Dead] = new DeadState(hero, this);*/
@@ -91,6 +93,6 @@ namespace BounceHeros
             }
         }
 
-        public void StateOnCollisionEnter(Collision2D collision) => currentState?.OnCollisionEnter(collision); 
+        public void StateOnCollisionEnter(UnityEngine.Collision2D collision) => currentState?.OnCollisionEnter(collision); 
     }
 }

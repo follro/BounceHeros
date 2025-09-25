@@ -20,29 +20,31 @@ namespace BounceHeros
             originalGravityScale = hero.Rigid2D.gravityScale;
             hero.Rigid2D.gravityScale = 0;
             currentRushableCount = hero.RushableCount;
-           // currentRushDirection = hero.RushDirection;
 
             hero.Rigid2D.velocity = hero.RushDirection * hero.RushSpeed;
+            hero.HeroAnimator.SetBool("IsRushState", true);
         }
 
         public override void Exit() 
         { 
             base.Exit();
             hero.Rigid2D.gravityScale = originalGravityScale;
+            hero.HeroAnimator.SetBool("IsRushState", false);
         }
 
         public override void FixedUpdate()
         {
             base.FixedUpdate();
             float currentSpeed = hero.Rigid2D.velocity.magnitude;
-
-            // 원하는 속도(hero.RushSpeed)와 아주 약간이라도 다르고, 속도가 0이 아니라면 (멈춰있지 않다면)
-            // 중요: float는 미세한 오차가 있을 수 있으므로 '==' 비교 대신 Mathf.Approximately 사용
+            Vector2 moveDirection = hero.Rigid2D.velocity.normalized;
             if (currentSpeed > 0 && !Mathf.Approximately(currentSpeed, hero.RushSpeed))
             {
-                // 현재 진행 방향(velocity.normalized)을 유지한 채로 속력만 보정
-                hero.Rigid2D.velocity = hero.Rigid2D.velocity.normalized * hero.RushSpeed;
+                //Vector2 moveDirection = hero.Rigid2D.velocity.normalized;
+                hero.Rigid2D.velocity = moveDirection * hero.RushSpeed;
+
             }
+                hero.HeroAnimator.SetFloat("MoveDirX", moveDirection.x);
+                hero.HeroAnimator.SetFloat("MoveDirY", moveDirection.y);
 
         }
 

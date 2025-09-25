@@ -26,6 +26,8 @@ namespace BounceHeros
 
         #region Property
         public Rigidbody2D Rigid2D { get; private set; }
+
+        public Animator HeroAnimator { get; private set; }
         float IHitable.MaxHP { get => maxHP; }
         float IHitable.HP { get => hp; }
         float IAttackable.AttackDamage { get => attackDamage; }
@@ -41,6 +43,7 @@ namespace BounceHeros
         private void Awake()
         {
             Rigid2D = GetComponent<Rigidbody2D>();
+            HeroAnimator = GetComponentInChildren<Animator>();
             stateMachine = new HeroStateMachine(this);
             hp = maxHP;
 
