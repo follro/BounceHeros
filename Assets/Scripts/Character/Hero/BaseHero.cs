@@ -61,18 +61,5 @@ namespace BounceHeros
             RushDirection = direction;
             stateMachine.RequestTransition(HeroStateMachine.HeroState.Rush);
         }
-
-        /*public override void Attack(IHitable hitableObject, float damage)
-        {
-            switch(stateMachine.CurrentStateType)
-            {
-                case HeroStateMachine.HeroState.Idle:
-                    base.Attack(hitableObject, damage);
-                    break;
-                case HeroStateMachine.HeroState.Rush:
-                    base.Attack(hitableObject, damage * rushDamageMultiplier);
-                    break;
-            }
-        }*/
     }
 }

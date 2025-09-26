@@ -5,18 +5,19 @@ using UnityEngine;
 namespace BounceHeros
 {
     [CreateAssetMenu(fileName = "New Hero Data", menuName = "Game/Hero Data")]
-    public class HeroDataSO : ScriptableObject
+    public class HeroDataSO : CharacterDataSO
     {
-        [Header("Base Stats - 초기값")]
-        public float baseMaxHP;
-        public float baseAttackDamage;
-        public float baseAttackSpeed;
+        [Header("Idle State")]
         public float baseMoveSpeed;
 
-        [Header("Static Data - 변하지 않는 값")]
+        [Header("Rush State")]
+        public float baseRushSpeed;
+        public int baseRushableCount;
+        public float baseRushDamageMultiplier;
+
         public string heroName;
         public Sprite heroIcon;
         //public RuntimeAnimatorController animatorController;
-        public LayerMask hitableLayerMask;
+        //public LayerMask hitableLayerMask;
     }
 }
