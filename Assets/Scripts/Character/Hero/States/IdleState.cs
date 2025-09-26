@@ -41,7 +41,7 @@ namespace BounceHeros
 
         private void HandleIHitableCollision(IHitable enemy)
         {
-            hero.Attack(enemy);
+            hero.Attack(enemy, hero.AttackDamage * hero.RushDamageMultiplier);
             hero.HeroAnimator.SetBool("IsHit", true); // юс╫ц 
         }
         private void HandleIAttackableCollision(IAttackable enemy, Vector3 enemyPos)

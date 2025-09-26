@@ -3,36 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 namespace BounceHeros
 {
-    public class BaseHero : MonoBehaviour, IHitable, IAttackable
+    public class BaseHero : Character
     {
         [SerializeField] private LayerMask hitableLayerMask;
 
-        [SerializeField] private float maxHP;
-        [SerializeField] private float hp;
+        [SerializeField] private float baseDamage;
         [SerializeField] private int rushableCount;
-        [SerializeField] private float attackDamage;
         [SerializeField] private float rushDamageMultiplier;
+        
 
         private HeroStateMachine stateMachine;
-
-        #region Events
-        //나중에 이벤트 넣어서 구현
-        public event Action<float> OnHitEvent;
-        public event Action OnAttackEvent;
-        #endregion
 
         #region Property
         public Rigidbody2D Rigid2D { get; private set; }
 
         public Animator HeroAnimator { get; private set; }
-        float IHitable.MaxHP { get => maxHP; }
-        float IHitable.HP { get => hp; }
-        float IAttackable.AttackDamage { get => attackDamage; }
         public float MinRushForce { get; private set; }
         public float RushSpeed { get; private set; }
+        public float RushDamageMultiplier { get => rushDamageMultiplier; }
         public Vector2 RushDirection { get; private set; }
         public int RushableCount { get => rushableCount; }  
 
@@ -44,9 +36,15 @@ namespace BounceHeros
         {
             Rigid2D = GetComponent<Rigidbody2D>();
             HeroAnimator = GetComponentInChildren<Animator>();
+
+            Initialize(null);
+        }
+
+        public void Initialize(HeroDataSO heroData)
+        {
             stateMachine = new HeroStateMachine(this);
             hp = maxHP;
-
+            totalDamage = baseDamage;
             //임시 값 들
             MinRushForce = 10;
         }
@@ -64,25 +62,17 @@ namespace BounceHeros
             stateMachine.RequestTransition(HeroStateMachine.HeroState.Rush);
         }
 
-        void IHitable.OnHit(float damage)
-        {
-            hp -= damage;
-            if(hp < 0) hp = 0;
-            OnHitEvent?.Invoke(damage);
-        }
-
-        public void Attack(IHitable hitableObject)
+        /*public override void Attack(IHitable hitableObject, float damage)
         {
             switch(stateMachine.CurrentStateType)
             {
                 case HeroStateMachine.HeroState.Idle:
-                    hitableObject.OnHit(attackDamage);
+                    base.Attack(hitableObject, damage);
                     break;
                 case HeroStateMachine.HeroState.Rush:
-                    hitableObject.OnHit(attackDamage * rushDamageMultiplier);
+                    base.Attack(hitableObject, damage * rushDamageMultiplier);
                     break;
             }
-            OnAttackEvent?.Invoke();
-        }
+        }*/
     }
 }

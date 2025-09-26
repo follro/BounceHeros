@@ -72,7 +72,7 @@ namespace BounceHeros
 
         private void HandleIHitableCollision(IHitable enemy)
         {
-            hero.Attack(enemy);
+            hero.Attack(enemy, hero.AttackDamage);
         }
 
      
