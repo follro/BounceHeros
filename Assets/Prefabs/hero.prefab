@@ -215,11 +215,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6902d300beddb14d99ae862459d27a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitableLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
   maxHP: 100
   hp: 0
-  rushableCount: 1
-  attackDamage: 10
+  totalDamage: 0
+  spriteRenderer: {fileID: 0}
+  hitableLayerMask:
+    serializedVersion: 2
+    m_Bits: 640
+  baseDamage: 100
+  rushableCount: 2
   rushDamageMultiplier: 1.2

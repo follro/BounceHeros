@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: TestSprites
+  m_EditorClassIdentifier: 
+  m_GroupName: TestSprites
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 807ff6a5d82579642b435c5ccd996795
+  m_SerializeEntries:
+  - m_GUID: 2b0026732189da044b6d5c247c52b71c
+    m_Address: Assets/Sprites/walls_floor 1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 41e311d97cacd5d4a93459ac8e38a758
+    m_Address: Assets/Sprites/Character/Hero.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 78e75ed9e075dab41bb6eed069bda98d
+    m_Address: Assets/Sprites/Character/Slime.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 828ff05b2d8efcc4d80ec30e3f6a1cfa
+    m_Address: Assets/Sprites/decorative_cracks_floor 1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a142b40d90f3a2d449158a9b20553de0
+    m_Address: Assets/Sprites/Objects 1.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: a89d292537d610542bb178754f0e8758, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: a57da41b8bfe51147b84676a32ddbaa6, type: 2}
+    - {fileID: 11400000, guid: 810d121fd9f4ee340bcb4e30551e8539, type: 2}

@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: TestAnimations
+  m_EditorClassIdentifier: 
+  m_GroupName: TestAnimations
+  m_Data:
+    m_SerializedData: []
+  m_GUID: ff4a3890cf6be624fa7da053d76f2ec2
+  m_SerializeEntries:
+  - m_GUID: 03e60e1ac88947a4fb165185bc32b16c
+    m_Address: Assets/Animation/Hero/HeroWalkRight.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1d6f20f8bbcd7f540bbda42b52cd494d
+    m_Address: Assets/Animation/Hero/HeroWalkUp.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3ec78a23045f17042911ee4abe14b279
+    m_Address: Assets/Animation/Hero/HeroIdle.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 779a710a44088174da21cb34c93f2e43
+    m_Address: Assets/Animation/Hero/HeroWalkDown.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 88edd7815e4d68d4b892eff238ad9096
+    m_Address: Assets/Animation/Hero/HeroAni.controller
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: af25b05605d97fd48b848d0ee00d4b17
+    m_Address: Assets/Animation/Hero/HeroHit.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c8908ffbaa1257141ba65e1c0ecd3b3a
+    m_Address: Assets/Animation/Hero/HeroWalkLeft.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: a89d292537d610542bb178754f0e8758, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 8dc9308e765186944b36045c97711dfa, type: 2}
+    - {fileID: 11400000, guid: 165c385d0bd23524eacf4601fb3aaa9f, type: 2}

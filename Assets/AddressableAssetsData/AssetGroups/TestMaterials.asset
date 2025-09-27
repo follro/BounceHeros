@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: TestMaterials
+  m_EditorClassIdentifier: 
+  m_GroupName: TestMaterials
+  m_Data:
+    m_SerializedData: []
+  m_GUID: bf775a738013e7b47a27189275e7f324
+  m_SerializeEntries:
+  - m_GUID: 046be2a868523d247a84d0ea78d51903
+    m_Address: Assets/Material/DropZoneMaterial2D.physicsMaterial2D
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7225321a8b04fd9469b922761dc7c785
+    m_Address: Assets/Material/EnemyMaterial2D.physicsMaterial2D
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8f6758dc641871c44ae5e0b42d1b2ff5
+    m_Address: Assets/Material/HeroMaterial2D.physicsMaterial2D
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9c4bd4fccc150af409e89485d20961b2
+    m_Address: Assets/Material/WallMaterial2D.physicsMaterial2D
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d89345b32b886f44c9700e0376e60638
+    m_Address: Assets/Material/Red.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: a89d292537d610542bb178754f0e8758, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: f8a59587f4be71c4e84c216d4e77d682, type: 2}
+    - {fileID: 11400000, guid: f7f5900802cef9646b96d1dd14d69190, type: 2}
