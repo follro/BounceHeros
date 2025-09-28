@@ -1,21 +1,19 @@
 using Cysharp.Threading.Tasks;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.InputSystem;
-using UnityEngine.Tilemaps;
 
-public class TestAdressableLoader : MonoBehaviour
+public class TestAdressableLoader 
 {
-    [SerializeField] private AssetReferenceGameObject heroObj;
-    [SerializeField] private AssetReferenceGameObject[] enemyObj;
-    [SerializeField] private AssetReferenceGameObject mapObj;
+    private AssetReferenceGameObject heroObj;
+    private AssetReferenceGameObject[] enemyObj;
+    private AssetReferenceGameObject mapObj;
 
-    [SerializeField] private AssetReferenceSprite[] sprites;
+    private AssetReferenceSprite[] sprites;
 
     private List<GameObject> clearGameObjects = new List<GameObject>();
-    private async void Start()
+    public async void Initialize()
     {
         Debug.Log("Addressables 초기화 시작...");
         try
@@ -31,13 +29,13 @@ public class TestAdressableLoader : MonoBehaviour
         }
     }
 
-    UniTask InitAddressable()
+    private UniTask InitAddressable()
     {
         var initializeOperation = Addressables.InitializeAsync();
         return initializeOperation.ToUniTask();
     }
 
-    private async void Update()
+    public async void Update()
     {
         var keyboard = Keyboard.current;
         GameObject testObj = null;
@@ -54,7 +52,7 @@ public class TestAdressableLoader : MonoBehaviour
             testObj =await LoadAssetAsync("map");
         }
 
-        if (testObj != null) Instantiate(testObj, Vector3.zero, Quaternion.identity);
+       // if (testObj != null) Instantiate(testObj, Vector3.zero, Quaternion.identity);
 
     }
 
