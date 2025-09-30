@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[AttributeUsage(AttributeTargets.Constructor)]
+/*[AttributeUsage(AttributeTargets.Constructor)]
 public class InjectAttribute : Attribute
 {
 }
-
+*/
 public class ObjectResolver
 {
     private readonly HashSet<Type> registrations = new();
@@ -31,12 +31,12 @@ public class ObjectResolver
         registrations.Remove(typeof(T));
     }
 
-    public T Resolve<T>()
+   /* public T Resolve<T>()
     {
-        return (T)Resolve(typeof(T));   
-    }
+        //return (T)Resolve(typeof(T));   
+    }*/
 
-    private object Resolve(Type instanceType)
+    /*private object Resolve(Type instanceType)
     {
         if(instancePerTypeMap.TryGetValue(instanceType, out var instance))
             return instance;
@@ -59,5 +59,5 @@ public class ObjectResolver
 
         instancePerTypeMap[instanceType] = instance;    
         return instance;
-    }
+    }*/
 }

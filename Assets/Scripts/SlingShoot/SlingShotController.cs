@@ -1,47 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
+using VContainer;
+using VContainer.Unity;
 
 namespace BounceHeros
 {
-    public class SlingShotController : MonoBehaviour
+    public class SlingShotController : IStartable ,IDisposable //,ITickable
     {
-        [SerializeField] private Camera mainCamera;
-        [SerializeField] private float maxLength;
+        private Camera mainCamera;
         
-        [Header("Slingshot Components")]
-        [SerializeField] private DragInputHandler inputHandler;
-        [SerializeField] private SlingShotVisualizer visualizer;
-        [SerializeField] private HeroCatcher heroCatcher;
+        private readonly DragInputHandler inputHandler;
+        private readonly SlingShotVisualizer visualizer;
+        private readonly HeroCatcher heroCatcher;
 
 
         private bool isAiming;
         private float finalLaunchPower;
         private Vector2 finalLaunchDirection;
 
-        private void Awake()
+        [Inject]
+        public SlingShotController(DragInputHandler dragInputHandler, SlingShotVisualizer slingShotVisualizer, HeroCatcher heroCatcher, Camera camera)
         {
-            if (inputHandler == null || visualizer == null)
-            {
-                Debug.LogError("InputHandler 또는 Visualizer가 연결되지 않았습니다.");
-                return;
-            }
-            if (mainCamera == null) mainCamera = Camera.main;
-
-            inputHandler.OnDragStarted += HandleDragStart;
-            inputHandler.OnDragging += HandleDragging;
-            inputHandler.OnDragEnded += HandleDragEnd;
+            this.inputHandler = dragInputHandler;
+            this.visualizer = slingShotVisualizer;
+            this.heroCatcher = heroCatcher;
+            this.mainCamera = camera;
             isAiming = false;
         }
 
-        private void OnDestroy()
+        public void Start()
         {
-            if (inputHandler != null)
-            {
-                inputHandler.OnDragging -= HandleDragging;
-                inputHandler.OnDragEnded -= HandleDragEnd;
-            }
+            inputHandler.OnDragStarted += HandleDragStart;
+            inputHandler.OnDragging += HandleDragging;
+            inputHandler.OnDragEnded += HandleDragEnd;
+        }
+
+        public void Dispose()
+        {
+            inputHandler.OnDragStarted -= HandleDragStart;
+            inputHandler.OnDragging -= HandleDragging;
+            inputHandler.OnDragEnded -= HandleDragEnd;
         }
 
         private void HandleDragStart()
@@ -68,7 +66,7 @@ namespace BounceHeros
 
 
             Vector2 worldDirection = (lineEndWorldPos - lineStartWorldPos).normalized;
-            float worldLength = Mathf.Min(Vector2.Distance(lineStartWorldPos, lineEndWorldPos), maxLength);
+            float worldLength = Mathf.Min(Vector2.Distance(lineStartWorldPos, lineEndWorldPos));
 
             visualizer.UpdateAimLine(lineStartWorldPos, worldDirection, worldLength);
             visualizer.ShowAimLine();

@@ -122,7 +122,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &1820940933
+--- !u!1 &401639044
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,22 +130,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1820940934}
-  - component: {fileID: 1820940935}
+  - component: {fileID: 401639045}
+  - component: {fileID: 401639046}
   m_Layer: 0
-  m_Name: GameInitiator
+  m_Name: MainSceneInstaller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1820940934
+--- !u!4 &401639045
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1820940933}
+  m_GameObject: {fileID: 401639044}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -154,35 +154,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1820940935
+--- !u!114 &401639046
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1820940933}
+  m_GameObject: {fileID: 401639044}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92cdd1eb5cdfe2a42a61dfc1b4c33778, type: 3}
+  m_Script: {fileID: 11500000, guid: 149d465c253f1734a9dbb955a42268ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentReference:
+    TypeName: 
+  autoRun: 1
+  autoInjectGameObjects: []
   mainCamera: {fileID: 1471972811856970545, guid: 9eaed31672291744cbc7e09f15667c4c,
     type: 3}
-  mainDirectionalLight: {fileID: 1464173424396787754, guid: b63baeed9bf9f744fa592308ef329556,
+  dragInputHandlerPrefab: {fileID: 2877758414659823331, guid: 9dc83a733a7321744af9e4cce7552966,
     type: 3}
-  mainEventSystem: {fileID: 6990330488464130889, guid: 586d50f47ddf4f54cbb537f5eb9a20e9,
+  heroCatcherPrefab: {fileID: 1058997538702528511, guid: bb5e0a1f3a85c894694b350984309977,
     type: 3}
-  background: {fileID: 4485293202148595163, guid: fdc296ce8db8c9447b62f947f1314440,
+  slingShotVisualizerPrefab: {fileID: 4563147826269270506, guid: 0f578f697e4343744b7814a69f3e0701,
     type: 3}
-  loadingScreen: {fileID: 5141739072484631547, guid: dac3414b19644314f9eddb9501567e84,
+  gameInitiatorPrefab: {fileID: 4437146691553874798, guid: 6c3e0053dd982334081f9ecf682e32c6,
     type: 3}
-  catchController: {fileID: 3264976356347138984, guid: bb5e0a1f3a85c894694b350984309977,
-    type: 3}
-  hero: {fileID: 2480039858386371094, guid: 11ceb318bab795f4c821d0a0740debdb, type: 3}
-  enemy: {fileID: 7671484846172866435, guid: 731cede98176b994f85d89e41f133d07, type: 3}
-  map: {fileID: 5804199472388062197, guid: 0cac8bc12b4d89047b6de19ed4cc4d53, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1820940934}
+  - {fileID: 401639045}

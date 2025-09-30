@@ -3,15 +3,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using VContainer;
+using VContainer.Unity;
 
 
 namespace BounceHeros
 {
     public class GameInitiator : MonoBehaviour
     {
-        [SerializeField] private Camera mainCamera;
+       
         [SerializeField] private Light mainDirectionalLight;
         [SerializeField] private EventSystem mainEventSystem;
         [SerializeField] private GameObject background;
@@ -19,16 +22,26 @@ namespace BounceHeros
         //[SerializeField] private LevelUI levelUI;
         //[SerializeField] private LevelManager levelManager;
         [SerializeField] private LoadingScreen loadingScreen;
-        [SerializeField] private GameObject catchController;
-
 
         //임시 오브젝트들
         [SerializeField] private BaseHero hero;
         [SerializeField] private BaseEnemy enemy;
         [SerializeField] private GameObject map;
 
+        private DragInputHandler dragInputHandler;
+        private HeroCatcher heroCatcher;
+        private SlingShotVisualizer slingShotVisualizer;
 
-
+        [Inject]
+        public void Construct(
+            DragInputHandler dragInputHandler,
+            HeroCatcher heroCatcher,
+            SlingShotVisualizer slingShotVisualizer)
+        {
+            this.dragInputHandler = dragInputHandler;
+            this.heroCatcher = heroCatcher;
+            this.slingShotVisualizer = slingShotVisualizer;
+        }
 
         private async void Start()
         {
@@ -46,23 +59,23 @@ namespace BounceHeros
             }
 
             await BeginGame();
-
         }
+
 
         private void BindingObject()
         {
-            mainCamera = Instantiate(mainCamera);
+            
             mainDirectionalLight = Instantiate(mainDirectionalLight);
             mainEventSystem = Instantiate(mainEventSystem);
             background = Instantiate(background);
             map = Instantiate(map);
             loadingScreen = Instantiate(loadingScreen);
-            catchController = Instantiate(catchController); 
+
         }
 
         private async UniTask InitializeObjects()
         {
-            catchController.SetActive(true);
+            heroCatcher.gameObject.SetActive(true);
             await UniTask.Delay(TimeSpan.FromSeconds(3));
         }
 
@@ -96,6 +109,7 @@ namespace BounceHeros
             await UniTask.Delay(TimeSpan.FromSeconds(3));
 
         }
+
 
     }
 }

@@ -8,8 +8,9 @@ namespace BounceHeros
     public class HeroCatcher : MonoBehaviour
     {
         [SerializeField] LayerMask heroLayer;
-        public BaseHero Hero { get; private set; }    
+        public BaseHero Hero { get; private set; }
 
+        [SerializeField] float maxForceAmount = 12;
         private void OnTriggerEnter2D(Collider2D other)
         {
             int layer = other.gameObject.layer;
@@ -29,6 +30,12 @@ namespace BounceHeros
 
         public void Catch() => Hero?.Catched();
 
-        public void Launch(Vector2 direction, float forceAmount) => Hero?.Rush(direction, forceAmount);
+        public void Launch(Vector2 direction, float forceAmount)
+        {
+            if(forceAmount > maxForceAmount)
+                forceAmount = maxForceAmount;   
+
+            Hero?.Rush(direction, forceAmount);
+        }
     }
 }
