@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using VContainer;
@@ -14,38 +15,24 @@ namespace BounceHeros
 {
     public class GameInitiator : MonoBehaviour
     {
-       
+        [SerializeField] private Camera mainCamera;
         [SerializeField] private Light mainDirectionalLight;
         [SerializeField] private EventSystem mainEventSystem;
-        [SerializeField] private GameObject background;
-        //[SerializeField] private EnemiesSpawner enemiesSpawner;
-        //[SerializeField] private LevelUI levelUI;
-        //[SerializeField] private LevelManager levelManager;
+        [SerializeField] private GameObject mapCollider;
+        
+
         [SerializeField] private LoadingScreen loadingScreen;
+        [SerializeField] private GameObject slingShotController;
 
         //임시 오브젝트들
         [SerializeField] private BaseHero hero;
         [SerializeField] private BaseEnemy enemy;
         [SerializeField] private GameObject map;
 
-        private DragInputHandler dragInputHandler;
-        private HeroCatcher heroCatcher;
-        private SlingShotVisualizer slingShotVisualizer;
-
-        [Inject]
-        public void Construct(
-            DragInputHandler dragInputHandler,
-            HeroCatcher heroCatcher,
-            SlingShotVisualizer slingShotVisualizer)
-        {
-            this.dragInputHandler = dragInputHandler;
-            this.heroCatcher = heroCatcher;
-            this.slingShotVisualizer = slingShotVisualizer;
-        }
-
         private async void Start()
         {
             BindingObject();
+            
             using (var loadingScreenDisposable = new ShowLoadingScreenDisposable(loadingScreen))
             {
                 loadingScreenDisposable.SetLoadingBarPercent(0);
@@ -64,18 +51,17 @@ namespace BounceHeros
 
         private void BindingObject()
         {
-            
-            mainDirectionalLight = Instantiate(mainDirectionalLight);
-            mainEventSystem = Instantiate(mainEventSystem);
-            background = Instantiate(background);
-            map = Instantiate(map);
-            loadingScreen = Instantiate(loadingScreen);
-
+            mainCamera =            Instantiate(mainCamera);
+            mainDirectionalLight =  Instantiate(mainDirectionalLight);
+            mainEventSystem =       Instantiate(mainEventSystem);
+            mapCollider =           Instantiate(mapCollider);
+            map =                   Instantiate(map);
+            loadingScreen =         Instantiate(loadingScreen);
+            slingShotController =   Instantiate(slingShotController);     
         }
 
         private async UniTask InitializeObjects()
         {
-            heroCatcher.gameObject.SetActive(true);
             await UniTask.Delay(TimeSpan.FromSeconds(3));
         }
 
@@ -108,6 +94,7 @@ namespace BounceHeros
             enemy.gameObject.SetActive(true);
             await UniTask.Delay(TimeSpan.FromSeconds(3));
 
+            Destroy(this.gameObject);
         }
 
 

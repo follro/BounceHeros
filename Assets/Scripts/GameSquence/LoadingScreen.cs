@@ -17,6 +17,7 @@ public class LoadingScreen : MonoBehaviour
             slider.DOValue(value, animationDuration);
         }
     }
+
     public void Show()
     {
         gameObject.SetActive(true);

@@ -5,7 +5,7 @@ using VContainer.Unity;
 
 namespace BounceHeros
 {
-    public class SlingShotController : IStartable ,IDisposable //,ITickable
+    public class SlingShotController : IStartable ,IDisposable //, ITickable
     {
         private Camera mainCamera;
         
@@ -19,12 +19,12 @@ namespace BounceHeros
         private Vector2 finalLaunchDirection;
 
         [Inject]
-        public SlingShotController(DragInputHandler dragInputHandler, SlingShotVisualizer slingShotVisualizer, HeroCatcher heroCatcher, Camera camera)
+        public SlingShotController(DragInputHandler dragInputHandler, SlingShotVisualizer slingShotVisualizer, HeroCatcher heroCatcher)
         {
             this.inputHandler = dragInputHandler;
             this.visualizer = slingShotVisualizer;
             this.heroCatcher = heroCatcher;
-            this.mainCamera = camera;
+            this.mainCamera = Camera.main;
             isAiming = false;
         }
 
