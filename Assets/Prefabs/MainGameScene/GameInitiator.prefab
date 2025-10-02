@@ -50,7 +50,8 @@ MonoBehaviour:
     type: 3}
   mainEventSystem: {fileID: 6990330488464130889, guid: 586d50f47ddf4f54cbb537f5eb9a20e9,
     type: 3}
-  mapCollider: {fileID: 0}
+  mapCollider: {fileID: 4485293202148595163, guid: fdc296ce8db8c9447b62f947f1314440,
+    type: 3}
   loadingScreen: {fileID: 5141739072484631547, guid: dac3414b19644314f9eddb9501567e84,
     type: 3}
   slingShotController: {fileID: 3264976356347138984, guid: bb5e0a1f3a85c894694b350984309977,

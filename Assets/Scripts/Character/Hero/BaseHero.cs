@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
+using static UnityEditor.VersionControl.Asset;
 
 namespace BounceHeros
 {
@@ -42,12 +43,14 @@ namespace BounceHeros
 
         public void Initialize(HeroDataSO heroData)
         {
-            stateMachine = new HeroStateMachine(this);
+            stateMachine = new HeroStateMachine(this,  HeroStateMachine.HeroState.Idle);
             hp = maxHP;
             totalDamage = baseDamage;
             //임시 값 들
             MinRushForce = 10;
         }
+
+    
 
         private void Update() => stateMachine.Update();
         private void FixedUpdate() => stateMachine.FixedUpdate();

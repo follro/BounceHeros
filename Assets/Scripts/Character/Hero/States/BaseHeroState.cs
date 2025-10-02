@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace BounceHeros
 {
-    public abstract class BaseHeroState : IState 
+    public abstract class BaseHeroState : HakSeung.Util.IState 
     {
         protected HeroStateMachine stateMachine;
         protected BaseHero hero;

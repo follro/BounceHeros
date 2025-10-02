@@ -15,51 +15,35 @@ namespace BounceHeros
             Hit,
             Dead,
 
+            //추가 상태들 추후 추가 필요
+            //skill 1
+            //skill 2
             End
         }
 
-        private class StateEnumArray
-        {
-            private readonly BaseHeroState[] states;
-            public BaseHeroState this[HeroState key]
-            {
-                get => states[(int)key];
-                set => states[(int)key] = value;
-            }
-
-            public BaseHeroState this[int key]
-            {
-                get => states[key];
-                set => states[key] = value;
-            }
-
-            public StateEnumArray(int size)
-            {
-                states = new BaseHeroState[size];
-            }
-
-        }
+        
         #endregion
 
         public HeroState CurrentStateType { get; private set; }
-        private StateEnumArray states;
+        private HakSeung.Util.StateEnumArray<BaseHeroState, HeroState> states;
         private BaseHeroState currentState;
         private BaseHeroState nextState;
         private HeroState pendingStateType;
+        private bool isTransitionPending;
 
-        public HeroStateMachine(BaseHero hero)
+        public HeroStateMachine(BaseHero hero, HeroState startState)
         {
             currentState = null;
+            isTransitionPending = false;
             pendingStateType = HeroState.End;
 
-            states = new StateEnumArray((int)HeroState.End);
+            states = new HakSeung.Util.StateEnumArray<BaseHeroState, HeroState>((int)HeroState.End);
             states[HeroState.Idle] = new IdleState(hero, this);
             states[HeroState.Catched] = new CatchedState(hero, this);
             states[HeroState.Rush] = new RushState(hero, this);
             states[HeroState.Hit] = new HitState(hero, this);
 
-
-            TransitionTo(HeroState.Idle);
+            TransitionTo(startState);
             //states[HeroState.Dead] = new DeadState(hero, this);*/
 
         }
@@ -67,7 +51,7 @@ namespace BounceHeros
         public void RequestTransition(HeroState nextStateType)
         {
             if (states[nextStateType] == null || currentState == states[nextStateType]) return;
-
+            isTransitionPending = true;
             pendingStateType = nextStateType;
         }
 
@@ -86,10 +70,10 @@ namespace BounceHeros
         {
             currentState?.LateUpdate();
 
-            if (pendingStateType != HeroState.End)
+            if (isTransitionPending)
             {
                 TransitionTo(pendingStateType);
-                pendingStateType = HeroState.End;
+                isTransitionPending = false;
             }
         }
 
