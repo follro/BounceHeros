@@ -10,7 +10,7 @@ namespace BounceHeros
     {
         [SerializeField] GameInitiator gameInitiatorPrefab;
         //매니저들 여기에 구현
-
+        
         protected override void Configure(IContainerBuilder builder)
         {
             builder.RegisterComponentInNewPrefab(gameInitiatorPrefab, Lifetime.Scoped).AsSelf();

@@ -17,7 +17,7 @@ namespace BounceHeros
 
         public virtual void Enter()
         {
-            UnityEngine.Debug.Log($"{hero.name} <color=green>Enter</color>. Current State: <color=yellow>{this.GetType().Name}</color>.");
+            
             
         }
 
@@ -31,7 +31,7 @@ namespace BounceHeros
 
         public virtual void OnCollisionEnter(UnityEngine.Collision2D collision)
         {
-            UnityEngine.Debug.Log($"{hero.name} <color=yellow>CollisionEnter</color>. Current State: <color=yellow>{this.GetType().Name}</color>");
+            
         }
 
     }

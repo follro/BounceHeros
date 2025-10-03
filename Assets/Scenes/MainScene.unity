@@ -170,18 +170,55 @@ MonoBehaviour:
     TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
-  mainCamera: {fileID: 1471972811856970545, guid: 9eaed31672291744cbc7e09f15667c4c,
-    type: 3}
-  dragInputHandlerPrefab: {fileID: 2877758414659823331, guid: 9dc83a733a7321744af9e4cce7552966,
-    type: 3}
-  heroCatcherPrefab: {fileID: 1058997538702528511, guid: bb5e0a1f3a85c894694b350984309977,
-    type: 3}
-  slingShotVisualizerPrefab: {fileID: 4563147826269270506, guid: 0f578f697e4343744b7814a69f3e0701,
-    type: 3}
   gameInitiatorPrefab: {fileID: 4437146691553874798, guid: 6c3e0053dd982334081f9ecf682e32c6,
     type: 3}
+--- !u!1 &1512824377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1512824379}
+  - component: {fileID: 1512824378}
+  m_Layer: 0
+  m_Name: GameFlowManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1512824378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512824377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21d9d01ef4fcb53419cc7b340d3f4e69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1512824379
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512824377}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 401639045}
+  - {fileID: 1512824379}
