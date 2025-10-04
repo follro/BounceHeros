@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ILevelManager
+public interface ILevelChangeNotifier
 {
     void Subscribe(ILevelObserver observer);
     void Unsubscribe(ILevelObserver observer);
-    void OnLevelChange(int level);
+    void NotifyLevelChanged(int level);
 
 
 }
