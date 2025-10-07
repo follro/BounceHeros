@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ILevelChangeNotifier
+public interface ILevelNotifier
 {
     void Subscribe(ILevelObserver observer);
     void Unsubscribe(ILevelObserver observer);

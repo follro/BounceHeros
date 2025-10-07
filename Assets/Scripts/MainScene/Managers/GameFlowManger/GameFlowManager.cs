@@ -15,12 +15,15 @@ namespace BounceHeros
         //4. 
 
         private GameFlowStateMachine stateMachine;
-
+        public PauseSystem pauseSystem;
 
         public void Initialize()
         {
             stateMachine = new GameFlowStateMachine(this);
+            pauseSystem = new PauseSystem();
+
         }
+
         private void Awake()
         {
             Initialize();
@@ -29,11 +32,24 @@ namespace BounceHeros
         private void Update()
         {
             stateMachine.Update();
+            var keycode1 = KeyCode.Space;
+            var keycode2 = KeyCode.B;
+
+            if (Input.GetKeyDown(keycode1))
+                GamePause();
+            if(Input.GetKeyDown(keycode2))
+                GameResume();
         }
 
-        public void GamePause() => stateMachine.RequestTransition(GameFlowStateMachine.GameFlowState.GamePause);
-
-        public void GameResume() => stateMachine.RequestTransition(stateMachine.PreviousStateType);
-        
+        public void GamePause()
+        {
+            if(stateMachine.CurrentStateType != GameFlowStateMachine.GameFlowState.GamePause)
+                stateMachine.RequestTransition(GameFlowStateMachine.GameFlowState.GamePause);
+        }
+        public void GameResume()
+        {
+            if(stateMachine.CurrentStateType == GameFlowStateMachine.GameFlowState.GamePause)
+                stateMachine.RequestTransition(stateMachine.PreviousStateType);
+        }
     }
 }

@@ -13,10 +13,15 @@ namespace BounceHeros
         public override void Enter()
         {
             base.Enter();
-
-           
+            gameFlowManager.pauseSystem.Pause();
         }
 
-        
+        public override void Exit()
+        {
+            base.Exit();   
+            gameFlowManager.pauseSystem.Resume();
+        }
+
+
     }
 }
