@@ -15,25 +15,31 @@ namespace BounceHeros
 {
     public class GameInitiator : MonoBehaviour
     {
-        [SerializeField] private Camera mainCamera;
-        [SerializeField] private Light mainDirectionalLight;
-        [SerializeField] private EventSystem mainEventSystem;
-        [SerializeField] private GameObject mapCollider;
-        
+        [SerializeField] private Camera mainCameraPrefab; 
+        [SerializeField] private Light directionalLightPrefab;
+        [SerializeField] private EventSystem eventSystemPrefab;
+        [SerializeField] private GameObject mapColliderPrefab;
+        [SerializeField] private LoadingScreen loadingScreenPrefab;
+        [SerializeField] private GameObject slingshotControllerPrefab;
 
-        [SerializeField] private LoadingScreen loadingScreen;
-        [SerializeField] private GameObject slingShotController;
+        [SerializeField] private BaseHero heroPrefab;
+        [SerializeField] private BaseEnemy enemyPrefab;
+        [SerializeField] private GameObject mapPrefab;
 
-        //임시 오브젝트들
-        [SerializeField] private BaseHero hero;
-        [SerializeField] private BaseEnemy enemy;
-        [SerializeField] private GameObject map;
+        private Camera mainCameraInstance;
+        private EventSystem eventSystemInstance;
+        private LoadingScreen loadingScreenInstance;
+        private GameObject mapColliderInstance;
+        private GameObject mapInstance;
 
-        private async void Start()
+        private BaseHero heroInstance;
+        private BaseEnemy enemyInstance;
+
+        public async UniTask GameSetting()
         {
             BindingObject();
             
-            using (var loadingScreenDisposable = new ShowLoadingScreenDisposable(loadingScreen))
+            using (var loadingScreenDisposable = new ShowLoadingScreenDisposable(loadingScreenInstance))
             {
                 loadingScreenDisposable.SetLoadingBarPercent(0);
                 await InitializeObjects();
@@ -51,13 +57,21 @@ namespace BounceHeros
 
         private void BindingObject()
         {
-            mainCamera =            Instantiate(mainCamera);
-            mainDirectionalLight =  Instantiate(mainDirectionalLight);
-            mainEventSystem =       Instantiate(mainEventSystem);
-            mapCollider =           Instantiate(mapCollider);
-            map =                   Instantiate(map);
-            loadingScreen =         Instantiate(loadingScreen);
-            slingShotController =   Instantiate(slingShotController);     
+            /* mainCamera =            Instantiate(mainCamera);
+             mainDirectionalLight =  Instantiate(mainDirectionalLight);
+             mainEventSystem =       Instantiate(mainEventSystem);
+             mapCollider =           Instantiate(mapCollider);
+             map =                   Instantiate(map);
+             loadingScreen =         Instantiate(loadingScreen);
+             slingShotController =   Instantiate(slingShotController);*/
+
+            mainCameraInstance = Instantiate(mainCameraPrefab);
+            Instantiate(directionalLightPrefab); // 라이트는 인스턴스를 저장하지 않아도 될 수 있음
+            eventSystemInstance = Instantiate(eventSystemPrefab);
+            mapColliderInstance = Instantiate(mapColliderPrefab);
+            mapInstance = Instantiate(mapPrefab);   
+            loadingScreenInstance = Instantiate(loadingScreenPrefab);
+            Instantiate(slingshotControllerPrefab);
         }
 
         private async UniTask InitializeObjects()
@@ -72,10 +86,10 @@ namespace BounceHeros
             var obj = bundle.LoadAsset<GameObject>("MyObject");
             var obj2 = awiat Addressable.LoadAssetAsync<GameObject>("AddressableKey");
              */
-            hero = Instantiate(hero, new Vector3(0, 8, 0), Quaternion.identity);
-            enemy = Instantiate(enemy, new Vector3(1, 1, 0), Quaternion.identity);
-            hero.gameObject.SetActive(false);
-            enemy.gameObject.SetActive(false);
+            heroInstance = Instantiate(heroPrefab, new Vector3(0, 8, 0), Quaternion.identity);
+            enemyInstance = Instantiate(enemyPrefab, new Vector3(1, 1, 0), Quaternion.identity);
+            heroInstance.gameObject.SetActive(false);
+            enemyInstance.gameObject.SetActive(false);
 
             await UniTask.Delay(TimeSpan.FromSeconds(3));
         }
@@ -90,11 +104,10 @@ namespace BounceHeros
         {
             //await levelUI.ShowLevelAnimation();
             //enemiesSpawner.ShowAllEnemies();
-            hero.gameObject.SetActive(true);
-            enemy.gameObject.SetActive(true);
+            heroInstance.gameObject.SetActive(true);
+            enemyInstance.gameObject.SetActive(true);
             await UniTask.Delay(TimeSpan.FromSeconds(3));
 
-            Destroy(this.gameObject);
         }
 
 

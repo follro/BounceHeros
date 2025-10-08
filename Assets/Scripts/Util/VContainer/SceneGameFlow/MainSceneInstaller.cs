@@ -14,6 +14,9 @@ namespace BounceHeros
         protected override void Configure(IContainerBuilder builder)
         {
             builder.RegisterComponentInNewPrefab(gameInitiatorPrefab, Lifetime.Scoped).AsSelf();
+         
+            //builder.Register<LevelSystem>(Lifetime.Singleton);
+
         }
 
         protected override void Awake()

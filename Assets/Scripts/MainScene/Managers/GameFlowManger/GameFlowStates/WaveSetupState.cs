@@ -10,10 +10,10 @@ namespace BounceHeros
         {
         }
 
-        public async override void Enter()
+        public override void Enter()
         {
             base.Enter();
-            await UniTask.Delay(TimeSpan.FromSeconds(10));
+            gameFlowManager.levelSystem.NotifyLevelChanged(gameFlowManager.levelSystem.CurrentLevel + 1);
             stateMachine.RequestTransition(GameFlowStateMachine.GameFlowState.WaveRunning);
         }
     }

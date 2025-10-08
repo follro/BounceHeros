@@ -7,6 +7,6 @@ namespace BounceHeros
 {
     public interface ILevelObserver
     {
-        UniTask OnLevelChanged(int newLevelNumber);
+        void OnLevelChanged(int newLevel);
     }
 }

@@ -44,18 +44,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92cdd1eb5cdfe2a42a61dfc1b4c33778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 1471972811856970545, guid: 9eaed31672291744cbc7e09f15667c4c,
+  mainCameraPrefab: {fileID: 1471972811856970545, guid: 9eaed31672291744cbc7e09f15667c4c,
     type: 3}
-  mainDirectionalLight: {fileID: 1464173424396787754, guid: b63baeed9bf9f744fa592308ef329556,
+  directionalLightPrefab: {fileID: 1464173424396787754, guid: b63baeed9bf9f744fa592308ef329556,
     type: 3}
-  mainEventSystem: {fileID: 6990330488464130889, guid: 586d50f47ddf4f54cbb537f5eb9a20e9,
+  eventSystemPrefab: {fileID: 6990330488464130889, guid: 586d50f47ddf4f54cbb537f5eb9a20e9,
     type: 3}
-  mapCollider: {fileID: 4485293202148595163, guid: fdc296ce8db8c9447b62f947f1314440,
+  mapColliderPrefab: {fileID: 4485293202148595163, guid: fdc296ce8db8c9447b62f947f1314440,
     type: 3}
-  loadingScreen: {fileID: 5141739072484631547, guid: dac3414b19644314f9eddb9501567e84,
+  loadingScreenPrefab: {fileID: 5141739072484631547, guid: dac3414b19644314f9eddb9501567e84,
     type: 3}
-  slingShotController: {fileID: 3264976356347138984, guid: bb5e0a1f3a85c894694b350984309977,
+  slingshotControllerPrefab: {fileID: 3264976356347138984, guid: bb5e0a1f3a85c894694b350984309977,
     type: 3}
-  hero: {fileID: 2480039858386371094, guid: 11ceb318bab795f4c821d0a0740debdb, type: 3}
-  enemy: {fileID: 7671484846172866435, guid: 731cede98176b994f85d89e41f133d07, type: 3}
-  map: {fileID: 5804199472388062197, guid: 0cac8bc12b4d89047b6de19ed4cc4d53, type: 3}
+  heroPrefab: {fileID: 2480039858386371094, guid: 11ceb318bab795f4c821d0a0740debdb,
+    type: 3}
+  enemyPrefab: {fileID: 7671484846172866435, guid: 731cede98176b994f85d89e41f133d07,
+    type: 3}
+  mapPrefab: {fileID: 5804199472388062197, guid: 0cac8bc12b4d89047b6de19ed4cc4d53,
+    type: 3}
