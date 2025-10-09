@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace BounceHeros
 {
-    public abstract class Character : MonoBehaviour, IHitable, IAttackable
+    public abstract class Character : PoolableObject, IHitable, IAttackable
     {
         [SerializeField] protected float maxHP;
         [SerializeField] protected float hp;

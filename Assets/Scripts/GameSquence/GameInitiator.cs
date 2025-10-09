@@ -22,8 +22,6 @@ namespace BounceHeros
         [SerializeField] private LoadingScreen loadingScreenPrefab;
         [SerializeField] private GameObject slingshotControllerPrefab;
 
-        [SerializeField] private BaseHero heroPrefab;
-        [SerializeField] private BaseEnemy enemyPrefab;
         [SerializeField] private GameObject mapPrefab;
 
         private Camera mainCameraInstance;
@@ -32,8 +30,6 @@ namespace BounceHeros
         private GameObject mapColliderInstance;
         private GameObject mapInstance;
 
-        private BaseHero heroInstance;
-        private BaseEnemy enemyInstance;
 
         public async UniTask GameSetting()
         {
@@ -86,11 +82,11 @@ namespace BounceHeros
             var obj = bundle.LoadAsset<GameObject>("MyObject");
             var obj2 = awiat Addressable.LoadAssetAsync<GameObject>("AddressableKey");
              */
-            heroInstance = Instantiate(heroPrefab, new Vector3(0, 8, 0), Quaternion.identity);
+           /* heroInstance = Instantiate(heroPrefab, new Vector3(0, 8, 0), Quaternion.identity);
             enemyInstance = Instantiate(enemyPrefab, new Vector3(1, 1, 0), Quaternion.identity);
             heroInstance.gameObject.SetActive(false);
             enemyInstance.gameObject.SetActive(false);
-
+*/
             await UniTask.Delay(TimeSpan.FromSeconds(3));
         }
 
@@ -104,8 +100,6 @@ namespace BounceHeros
         {
             //await levelUI.ShowLevelAnimation();
             //enemiesSpawner.ShowAllEnemies();
-            heroInstance.gameObject.SetActive(true);
-            enemyInstance.gameObject.SetActive(true);
             await UniTask.Delay(TimeSpan.FromSeconds(3));
 
         }
