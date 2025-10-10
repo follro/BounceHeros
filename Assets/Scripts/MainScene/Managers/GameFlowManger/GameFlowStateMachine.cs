@@ -38,17 +38,17 @@ namespace BounceHeros
             pendingTransitions = new Queue<GameFlowState>();
             states = new HakSeung.Util.StateEnumArray<BaseGameFlowState, GameFlowState>();
 
-            states[GameFlowState.GameInitialize] = new InitializeState(gameFlowManager, this);    
+            states[GameFlowState.GameInitialize]    = new InitializeState(gameFlowManager, this);    
 
-            states[GameFlowState.GameStart] = new GameStartState(gameFlowManager, this);
+            states[GameFlowState.GameStart]         = new GameStartState(gameFlowManager, this);
             
-            states[GameFlowState.ItemSelection] = new ItemSelectionState(gameFlowManager, this);
-            states[GameFlowState.WaveSetup] = new WaveSetupState(gameFlowManager, this);
-            states[GameFlowState.WaveRunning] = new WaveRunningState(gameFlowManager, this);
-            states[GameFlowState.WaveCompleted] = new WaveCompletedState(gameFlowManager, this);
+            states[GameFlowState.ItemSelection]     = new ItemSelectionState(gameFlowManager, this);
+            states[GameFlowState.WaveSetup]         = new WaveSetupState(gameFlowManager, this);
+            states[GameFlowState.WaveRunning]       = new WaveRunningState(gameFlowManager, this);
+            states[GameFlowState.WaveCompleted]     = new WaveCompletedState(gameFlowManager, this);
 
-            states[GameFlowState.GamePause] = new GamePauseState(gameFlowManager, this);
-            states[GameFlowState.GameOver] = new GameEndState(gameFlowManager, this);
+            states[GameFlowState.GamePause]         = new GamePauseState(gameFlowManager, this);
+            states[GameFlowState.GameOver]          = new GameEndState(gameFlowManager, this);
 
             TransitionTo(GameFlowState.GameInitialize);
         }
