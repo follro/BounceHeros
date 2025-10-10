@@ -9,11 +9,7 @@ namespace BounceHeros
     {
         public event Action<PoolableObject> OnReturnToPoolRequest;
         public string ObjectID { get; private set; }
-        public virtual void Initialize()
-        {
-            // 파생 클래스에서 재정의하여 상태를 초기화하도록 유도
-        }
-
+   
         public virtual void OnReturnToPool()
         {
             OnReturnToPoolRequest?.Invoke(this);

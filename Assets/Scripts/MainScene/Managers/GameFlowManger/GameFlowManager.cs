@@ -8,29 +8,22 @@ namespace BounceHeros
 {
     public class GameFlowManager : MonoBehaviour, IInitializable
     {
-        //각 상태에 필요한 것들을 만들어야됨
-        //1. 정지기능
-        //2. 웨이브 관리자 (웨이브 세팅 관련 정보들이 필요함)
-        //3. 씬 로더(특정 버튼에만 필요하므로 필요없을까나)
-        //4. 
-
         private GameFlowStateMachine stateMachine;
         
-        public GameInitiator gameInitiator;
-        
-        public PauseSystem pauseSystem;
-
-        public LevelSystem levelSystem;
-        [SerializeField] private LevelTextUI levelTextUI;
+        [SerializeField] private GameInitializationData gameInitializationData;
+        public GameInitializationData InitializationData => gameInitializationData;
+        public GameDataContext DataContext { get; private set; }    
+        public PauseSystem PauseController { get; private set; }
+        public LevelSystem LevelController { get; private set; }
        
-
         public void Initialize()
         {
-            stateMachine = new GameFlowStateMachine(this);
-            pauseSystem = new PauseSystem();
+            DataContext = new GameDataContext();
+            PauseController = new PauseSystem();
+            LevelController = new LevelSystem(100);
 
-            levelSystem = new LevelSystem(100);
-            levelSystem.Subscribe(levelTextUI);
+            stateMachine = new GameFlowStateMachine(this);
+            
         }
 
         private void Awake()
@@ -43,13 +36,13 @@ namespace BounceHeros
             stateMachine.Update();
 
             //테스트 
-            var keycode1 = KeyCode.Space;
+         /*   var keycode1 = KeyCode.Space;
             var keycode2 = KeyCode.B;
 
             if (Input.GetKeyDown(keycode1))
                 stateMachine.RequestTransition(GameFlowStateMachine.GameFlowState.WaveSetup);
             if(Input.GetKeyDown(keycode2))
-                GameResume();
+                GameResume();*/
         }
 
         public void GamePause()

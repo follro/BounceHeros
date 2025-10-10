@@ -9,12 +9,12 @@ namespace BounceHeros
 {
     public abstract class BaseGameFlowState : HakSeung.Util.IState
     {
-        protected GameFlowManager gameFlowManager;
+       // protected GameFlowManager gameFlowManager;
         protected GameFlowStateMachine stateMachine;
 
         public BaseGameFlowState(GameFlowManager gameFlowManager, GameFlowStateMachine gameFlowStateMachine)
         {
-            this.gameFlowManager = gameFlowManager;
+            //this.gameFlowManager = gameFlowManager;
             this.stateMachine = gameFlowStateMachine;
         }
 

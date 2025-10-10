@@ -12,6 +12,8 @@ namespace BounceHeros
         #region StateSetting
         public enum GameFlowState
         {
+            GameInitialize,
+
             ItemSelection,
             WaveSetup,
             WaveRunning,
@@ -36,6 +38,8 @@ namespace BounceHeros
             pendingTransitions = new Queue<GameFlowState>();
             states = new HakSeung.Util.StateEnumArray<BaseGameFlowState, GameFlowState>();
 
+            states[GameFlowState.GameInitialize] = new InitializeState(gameFlowManager, this);    
+
             states[GameFlowState.GameStart] = new GameStartState(gameFlowManager, this);
             
             states[GameFlowState.ItemSelection] = new ItemSelectionState(gameFlowManager, this);
@@ -46,7 +50,7 @@ namespace BounceHeros
             states[GameFlowState.GamePause] = new GamePauseState(gameFlowManager, this);
             states[GameFlowState.GameOver] = new GameEndState(gameFlowManager, this);
 
-            TransitionTo(GameFlowState.GameStart);
+            TransitionTo(GameFlowState.GameInitialize);
         }
 
         public void RequestTransition(GameFlowState nextStateType)

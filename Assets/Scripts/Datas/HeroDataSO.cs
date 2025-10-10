@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace BounceHeros
 {
-    [CreateAssetMenu(fileName = "New Hero Data", menuName = "Game/Hero Data")]
+    [CreateAssetMenu(fileName = "New Hero Data", menuName = "ScriptableObjects/Hero Data")]
     public class HeroDataSO : CharacterDataSO
     {
         [Header("Idle State")]

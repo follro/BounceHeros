@@ -5,21 +5,22 @@ namespace BounceHeros
 {
     public class GamePauseState : BaseGameFlowState
     {
+        private PauseSystem pauseSystem;
         public GamePauseState(GameFlowManager gameFlowManager, GameFlowStateMachine gameFlowStateMachine) : base(gameFlowManager, gameFlowStateMachine)
         {
-
+            pauseSystem = gameFlowManager.PauseController;
         }
 
         public override void Enter()
         {
             base.Enter();
-            gameFlowManager.pauseSystem.Pause();
+            pauseSystem.Pause();
         }
 
         public override void Exit()
         {
-            base.Exit();   
-            gameFlowManager.pauseSystem.Resume();
+            base.Exit();
+            pauseSystem.Resume();
         }
 
 

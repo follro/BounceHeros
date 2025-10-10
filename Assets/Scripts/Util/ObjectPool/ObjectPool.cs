@@ -75,7 +75,6 @@ namespace BounceHeros
                 }
             }
 
-            obj.Initialize(); // 여기 고쳐야됨
             obj.OnReturnToPoolRequest += ReturnToPool;
             obj.SetTransform(position, rotation);
             obj.gameObject.SetActive(true);

@@ -6,14 +6,16 @@ namespace BounceHeros
 {
     public class WaveSetupState : BaseGameFlowState
     {
+        private LevelSystem levelSystem;
         public WaveSetupState(GameFlowManager gameFlowManager, GameFlowStateMachine gameFlowStateMachine) : base(gameFlowManager, gameFlowStateMachine)
         {
+            levelSystem = gameFlowManager.LevelController;
         }
 
         public override void Enter()
         {
             base.Enter();
-            gameFlowManager.levelSystem.NotifyLevelChanged(gameFlowManager.levelSystem.CurrentLevel + 1);
+            levelSystem.NotifyLevelChanged(levelSystem.CurrentLevel + 1);
             stateMachine.RequestTransition(GameFlowStateMachine.GameFlowState.WaveRunning);
         }
     }
