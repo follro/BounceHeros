@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace BounceHeros
 {
-    public enum EnemyTypes : int 
+    public enum EnemyTypes 
     {
         Slime,
         Bat,
