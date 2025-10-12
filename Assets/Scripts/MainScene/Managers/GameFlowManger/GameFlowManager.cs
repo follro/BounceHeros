@@ -10,8 +10,8 @@ namespace BounceHeros
     {
         private GameFlowStateMachine stateMachine;
         
-        [SerializeField] private GameInitializationData gameInitializationData;
-        public GameInitializationData InitializationData => gameInitializationData;
+        [SerializeField] private GameInitializationDataSO gameInitializationData;
+        public GameInitializationDataSO InitializationData => gameInitializationData;
         public GameDataContext DataContext { get; private set; }    
         public PauseSystem PauseController { get; private set; }
         public LevelSystem LevelController { get; private set; }

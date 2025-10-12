@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 namespace BounceHeros
 {
     [CreateAssetMenu(fileName = "GameInitializationData", menuName = "ScriptableObjects/Game Initialization Data")]
-    public class GameInitializationData : ScriptableObject
+    public class GameInitializationDataSO : ScriptableObject
     {
         [Header("Core Systems")]
         public Camera mainCameraPrefab;

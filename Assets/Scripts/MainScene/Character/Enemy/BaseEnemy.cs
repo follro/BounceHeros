@@ -8,7 +8,7 @@ namespace BounceHeros
 {
     public class BaseEnemy : Character
     {
-
+        [SerializeField] EnemyType enemyType;
         private void Awake()
         {
             hp = MaxHP;

@@ -12,7 +12,7 @@ namespace BounceHeros
        // protected GameFlowManager gameFlowManager;
         protected GameFlowStateMachine stateMachine;
 
-        public BaseGameFlowState(GameFlowManager gameFlowManager, GameFlowStateMachine gameFlowStateMachine)
+        public BaseGameFlowState(GameFlowManager gameFlowManager,GameFlowStateMachine gameFlowStateMachine)
         {
             //this.gameFlowManager = gameFlowManager;
             this.stateMachine = gameFlowStateMachine;

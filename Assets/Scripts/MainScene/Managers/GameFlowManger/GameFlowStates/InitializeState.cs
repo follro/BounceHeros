@@ -42,7 +42,7 @@ namespace BounceHeros
 
         }
 
-        private void BindingObject(GameInitializationData gameInitializationData)
+        private void BindingObject(GameInitializationDataSO gameInitializationData)
         {
             UnityEngine.Object.Instantiate(gameInitializationData.directionalLightPrefab); 
             UnityEngine.Object.Instantiate(gameInitializationData.eventSystemPrefab);
