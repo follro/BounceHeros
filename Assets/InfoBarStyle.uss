@@ -1,0 +1,9 @@
+.panel {
+    flex-grow: 1;
+}
+
+.top-bar {
+}
+
+.wave-text-label {
+}

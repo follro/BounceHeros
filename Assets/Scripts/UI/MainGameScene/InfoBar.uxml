@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/InfoBarStyle.uss?fileID=7433441132597879392&amp;guid=19f5df9623c79ef4692c0de328a2c455&amp;type=3#InfoBarStyle" />
+    <ui:VisualElement name="panel" class="panel" style="min-width: auto; min-height: auto; width: 100%; height: 100%;">
+        <ui:VisualElement name="TopBar" class="top-bar" style="width: 100%; height: 200px;">
+            <ui:VisualElement name="WaveTextContainer" style="flex-grow: 1; flex-direction: row; height: 20px; justify-content: center;">
+                <ui:Label tabindex="-1" text="WAVE" parse-escape-sequences="true" display-tooltip-when-elided="true" name="WaveLabel" style="font-size: 50px; -unity-font-style: bold; color: rgb(255, 255, 255); -unity-font: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=ab4a9ce8207129843ad3e161f17a492b&amp;type=3#NotInter-Regular&quot;); -unity-text-align: upper-left; -unity-slice-left: 0; padding-left: 20px; padding-right: 20px; align-self: center;" />
+                <ui:Label tabindex="-1" text="0" parse-escape-sequences="true" display-tooltip-when-elided="true" name="WaveNumLabel" class="wave-text-label" style="font-size: 50px; color: rgb(255, 255, 255); -unity-font-style: bold; align-self: center;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="LifeZone" style="flex-grow: 1; flex-direction: row;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

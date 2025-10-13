@@ -9,7 +9,7 @@ namespace BounceHeros
     public class InitializeState : BaseGameFlowState
     {
         private GameFlowManager gameFlowManager;
-        private LoadingScreen loadingScreen;
+        private LoadingScreenController loadingScreenController;
 
         public InitializeState(GameFlowManager gameFlowManager, GameFlowStateMachine gameFlowStateMachine) : base(gameFlowManager, gameFlowStateMachine)
         {
@@ -21,7 +21,7 @@ namespace BounceHeros
             base.Enter();
             BindingObject(gameFlowManager.InitializationData);
 
-            using (var loadingScreenDisposable = new ShowLoadingScreenDisposable(loadingScreen))
+            using (var loadingScreenDisposable = new ShowLoadingScreenDisposable(loadingScreenController))
             {
                 loadingScreenDisposable.SetLoadingBarPercent(0);
                 await InitializeObjects();
@@ -48,8 +48,8 @@ namespace BounceHeros
             UnityEngine.Object.Instantiate(gameInitializationData.eventSystemPrefab);
             UnityEngine.Object.Instantiate(gameInitializationData.mapColliderPrefab);
             UnityEngine.Object.Instantiate(gameInitializationData.slingshotControllerPrefab);
-            
-            loadingScreen                           = UnityEngine.Object.Instantiate(gameInitializationData.loadingScreenPrefab);
+
+            loadingScreenController                 = UnityEngine.Object.Instantiate(gameInitializationData.loadingScreenPrefab);
             gameFlowManager.DataContext.WaveUI      = UnityEngine.Object.Instantiate(gameInitializationData.waveTextUI);
             gameFlowManager.DataContext.MainCamera  = UnityEngine.Object.Instantiate(gameInitializationData.mainCameraPrefab);
             gameFlowManager.DataContext.Map         = UnityEngine.Object.Instantiate(gameInitializationData.mapPrefab);

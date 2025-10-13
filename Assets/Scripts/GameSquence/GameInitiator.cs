@@ -26,7 +26,7 @@ namespace BounceHeros
 
         private Camera mainCameraInstance;
         private EventSystem eventSystemInstance;
-        private LoadingScreen loadingScreenInstance;
+        private LoadingScreenController loadingScreenInstance;
         private GameObject mapColliderInstance;
         private GameObject mapInstance;
 
@@ -37,7 +37,7 @@ namespace BounceHeros
             
             using (var loadingScreenDisposable = new ShowLoadingScreenDisposable(loadingScreenInstance))
             {
-                loadingScreenDisposable.SetLoadingBarPercent(0);
+                loadingScreenDisposable.SetLoadingBarPercent(0f);
                 await InitializeObjects();
                 loadingScreenDisposable.SetLoadingBarPercent(0.33f);
                 await CreateObjects();
@@ -66,7 +66,7 @@ namespace BounceHeros
             eventSystemInstance = Instantiate(eventSystemPrefab);
             mapColliderInstance = Instantiate(mapColliderPrefab);
             mapInstance = Instantiate(mapPrefab);   
-            loadingScreenInstance = Instantiate(loadingScreenPrefab);
+            //loadingScreenInstance = Instantiate(loadingScreenPrefab);
             Instantiate(slingshotControllerPrefab);
         }
 

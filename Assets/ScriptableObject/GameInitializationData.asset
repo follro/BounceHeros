@@ -22,7 +22,7 @@ MonoBehaviour:
     type: 3}
   mapColliderPrefab: {fileID: 4485293202148595163, guid: fdc296ce8db8c9447b62f947f1314440,
     type: 3}
-  loadingScreenPrefab: {fileID: 5141739072484631547, guid: dac3414b19644314f9eddb9501567e84,
+  loadingScreenPrefab: {fileID: 6497765293005027461, guid: 1704339f7158be94785124ff8eabaf3a,
     type: 3}
   waveTextUI: {fileID: 6118574824812023936, guid: b101efa09c7256e40ac00a4fc9090099,
     type: 3}

@@ -19,7 +19,7 @@ namespace BounceHeros
         public GameObject mapColliderPrefab;
 
         [Header("UI")]
-        public LoadingScreen loadingScreenPrefab;
+        public LoadingScreenController loadingScreenPrefab;
         public LevelTextUI waveTextUI;
 
         [Header("Controllers")]
