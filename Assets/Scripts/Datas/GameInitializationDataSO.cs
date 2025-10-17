@@ -20,7 +20,8 @@ namespace BounceHeros
 
         [Header("UI")]
         public LoadingScreenController loadingScreenPrefab;
-        public LevelTextUI waveTextUI;
+        public InfoBarController infoBarController;
+        //public GameObject gameInfoBarPrefab;
 
         [Header("Controllers")]
         public GameObject slingshotControllerPrefab;

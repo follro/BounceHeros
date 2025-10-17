@@ -10,8 +10,8 @@ namespace BounceHeros
     {
         public Camera MainCamera { get; set; }
 
-        //Level
-        public LevelTextUI WaveUI { get; set; }
+        //Level, life, score
+        public InfoBarController infoBarController { get; set; }
 
         // Map
         public GameObject Map { get; set; }

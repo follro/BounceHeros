@@ -49,7 +49,7 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 8b55ff0137a6653428df40277c96d40a,
     type: 3}
-  m_SortingOrder: 10
+  m_SortingOrder: 20
 --- !u!114 &6497765293005027461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,3 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationDuration: 0.5
+  waveHeight: -10
+  waveCharDuration: 0.4
+  waveCharDelay: 0.08
+  waveLoopDelay: 0.5

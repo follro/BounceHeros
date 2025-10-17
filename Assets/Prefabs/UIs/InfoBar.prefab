@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2254582311392951968}
   - component: {fileID: 5460958361956440209}
+  - component: {fileID: 1023016976668530755}
   m_Layer: 0
-  m_Name: TopBar
+  m_Name: InfoBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,3 +50,15 @@ MonoBehaviour:
   sourceAsset: {fileID: 9197481963319205126, guid: d96a1ea2d219c774782e8e3f1c9e315b,
     type: 3}
   m_SortingOrder: 10
+--- !u!114 &1023016976668530755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3938640455596111564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9bef92cce0c3114a846e87c705359ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

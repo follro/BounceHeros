@@ -20,14 +20,14 @@ namespace BounceHeros
         private VisualElement ui;
         private ProgressBar progressBar;
         private Label loadingText;
-        private List<Label> characterLabels; // 분리된 글자 Label들을 담을 리스트
+        private List<Label> loadingLabels; // 분리된 글자 Label들을 담을 리스트
         private Sequence waveSequence;       // 텍스트 웨이브 애니메이션 시퀀스
 
         private void Awake()
         {
             ui = GetComponent<UIDocument>().rootVisualElement;
             progressBar = ui.Q<ProgressBar>("LoadingPrgressbar");
-            characterLabels = ui.Query<Label>(className: "loading-char").ToList();
+            loadingLabels = ui.Query<Label>(className: "loading-char").ToList();
         }
 
         public float CurrentBarPercent
@@ -56,15 +56,16 @@ namespace BounceHeros
             ui.style.display = DisplayStyle.None;
             StopWaveAnimation();
         }
+
         private void StartWaveAnimation()
         {
             StopWaveAnimation(); 
 
             waveSequence = DOTween.Sequence();
 
-            for (int i = 0; i < characterLabels.Count; i++)
+            for (int i = 0; i < loadingLabels.Count; i++)
             {
-                Label characterLabel = characterLabels[i];
+                Label characterLabel = loadingLabels[i];
 
                 Sequence charSequence = DOTween.Sequence()
                     .Append(DOTween.To(
@@ -94,7 +95,7 @@ namespace BounceHeros
             DOTween.Kill("WaveSequence", true);
 
             
-            foreach (var label in characterLabels)
+            foreach (var label in loadingLabels)
             {
                 label.style.translate = new Translate(Length.Percent(0), Length.Percent(0));
             }

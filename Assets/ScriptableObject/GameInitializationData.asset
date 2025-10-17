@@ -24,7 +24,7 @@ MonoBehaviour:
     type: 3}
   loadingScreenPrefab: {fileID: 6497765293005027461, guid: 1704339f7158be94785124ff8eabaf3a,
     type: 3}
-  waveTextUI: {fileID: 6118574824812023936, guid: b101efa09c7256e40ac00a4fc9090099,
+  infoBarController: {fileID: 1023016976668530755, guid: 51ab7735d6f75bc4e9fba0be44bbd34e,
     type: 3}
   slingshotControllerPrefab: {fileID: 3264976356347138984, guid: bb5e0a1f3a85c894694b350984309977,
     type: 3}

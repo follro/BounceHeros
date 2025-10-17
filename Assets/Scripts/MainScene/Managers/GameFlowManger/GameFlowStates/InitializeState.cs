@@ -49,10 +49,10 @@ namespace BounceHeros
             UnityEngine.Object.Instantiate(gameInitializationData.mapColliderPrefab);
             UnityEngine.Object.Instantiate(gameInitializationData.slingshotControllerPrefab);
 
-            loadingScreenController                 = UnityEngine.Object.Instantiate(gameInitializationData.loadingScreenPrefab);
-            gameFlowManager.DataContext.WaveUI      = UnityEngine.Object.Instantiate(gameInitializationData.waveTextUI);
-            gameFlowManager.DataContext.MainCamera  = UnityEngine.Object.Instantiate(gameInitializationData.mainCameraPrefab);
-            gameFlowManager.DataContext.Map         = UnityEngine.Object.Instantiate(gameInitializationData.mapPrefab);
+            loadingScreenController                            = UnityEngine.Object.Instantiate(gameInitializationData.loadingScreenPrefab);
+            gameFlowManager.DataContext.infoBarController      = UnityEngine.Object.Instantiate(gameInitializationData.infoBarController);
+            gameFlowManager.DataContext.MainCamera             = UnityEngine.Object.Instantiate(gameInitializationData.mainCameraPrefab);
+            gameFlowManager.DataContext.Map                    = UnityEngine.Object.Instantiate(gameInitializationData.mapPrefab);
         }
 
         private async UniTask InitializeObjects()
@@ -78,7 +78,7 @@ namespace BounceHeros
         private async UniTask PrepareGame()
         {
             //게임 초기세팅 플레이어 위치 같은거
-            gameFlowManager.LevelController.Subscribe(gameFlowManager.DataContext.WaveUI);
+            gameFlowManager.LevelController.Subscribe(gameFlowManager.DataContext.infoBarController);
             await UniTask.Delay(TimeSpan.FromSeconds(3));
         }
 
@@ -86,7 +86,7 @@ namespace BounceHeros
         {
             //await levelUI.ShowLevelAnimation();
             //enemiesSpawner.ShowAllEnemies();
-            await UniTask.Delay(TimeSpan.FromSeconds(3));
+            await UniTask.Yield();
             stateMachine.RequestTransition(GameFlowStateMachine.GameFlowState.GameStart);
         }
     }
