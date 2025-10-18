@@ -33,22 +33,22 @@ namespace BounceHeros
         private BaseGameFlowState currentState;
         private Queue<GameFlowState> pendingTransitions;
 
-        public GameFlowStateMachine(GameFlowManager gameFlowManager)
+        public GameFlowStateMachine(GameInitializationDataSO initializationDataSO, GameContext gameContext)
         {
             pendingTransitions = new Queue<GameFlowState>();
             states = new HakSeung.Util.StateEnumArray<BaseGameFlowState, GameFlowState>();
 
-            states[GameFlowState.GameInitialize]    = new InitializeState(gameFlowManager, this);    
+            states[GameFlowState.GameInitialize]    = new InitializeState(initializationDataSO, gameContext, this);    
 
-            states[GameFlowState.GameStart]         = new GameStartState(gameFlowManager, this);
+            states[GameFlowState.GameStart]         = new GameStartState(gameContext, this);
             
-            states[GameFlowState.ItemSelection]     = new ItemSelectionState(gameFlowManager, this);
-            states[GameFlowState.WaveSetup]         = new WaveSetupState(gameFlowManager, this);
-            states[GameFlowState.WaveRunning]       = new WaveRunningState(gameFlowManager, this);
-            states[GameFlowState.WaveCompleted]     = new WaveCompletedState(gameFlowManager, this);
+            states[GameFlowState.ItemSelection]     = new ItemSelectionState(gameContext, this);
+            states[GameFlowState.WaveSetup]         = new WaveSetupState(gameContext, this);
+            states[GameFlowState.WaveRunning]       = new WaveRunningState(gameContext, this);
+            states[GameFlowState.WaveCompleted]     = new WaveCompletedState(gameContext, this);
 
-            states[GameFlowState.GamePause]         = new GamePauseState(gameFlowManager, this);
-            states[GameFlowState.GameOver]          = new GameEndState(gameFlowManager, this);
+            states[GameFlowState.GamePause]         = new GamePauseState(gameContext, this);
+            states[GameFlowState.GameOver]          = new GameEndState(gameContext, this);
 
             TransitionTo(GameFlowState.GameInitialize);
         }

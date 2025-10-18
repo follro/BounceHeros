@@ -7,9 +7,9 @@ namespace BounceHeros
     public class WaveSetupState : BaseGameFlowState
     {
         private LevelSystem levelSystem;
-        public WaveSetupState(GameFlowManager gameFlowManager, GameFlowStateMachine gameFlowStateMachine) : base(gameFlowManager, gameFlowStateMachine)
+        public WaveSetupState(GameContext gameContext, GameFlowStateMachine gameFlowStateMachine) : base(gameContext, gameFlowStateMachine)
         {
-            levelSystem = gameFlowManager.LevelController;
+            levelSystem = gameContext.LevelController;
         }
 
         public override void Enter()

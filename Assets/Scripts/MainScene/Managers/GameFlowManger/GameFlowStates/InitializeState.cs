@@ -8,18 +8,20 @@ namespace BounceHeros
 {
     public class InitializeState : BaseGameFlowState
     {
-        private GameFlowManager gameFlowManager;
+        private GameContext gameContext;
+        private GameInitializationDataSO initializationData;
         private LoadingScreenController loadingScreenController;
 
-        public InitializeState(GameFlowManager gameFlowManager, GameFlowStateMachine gameFlowStateMachine) : base(gameFlowManager, gameFlowStateMachine)
+        public InitializeState(GameInitializationDataSO initializationData, GameContext gameContext, GameFlowStateMachine gameFlowStateMachine) : base(gameContext, gameFlowStateMachine)
         {
-            this.gameFlowManager = gameFlowManager;
+            this.initializationData = initializationData;
+            this.gameContext = gameContext;
         }
 
         public override async void Enter()
         {
             base.Enter();
-            BindingObject(gameFlowManager.InitializationData);
+            BindingObject(initializationData);
 
             using (var loadingScreenDisposable = new ShowLoadingScreenDisposable(loadingScreenController))
             {
@@ -50,9 +52,9 @@ namespace BounceHeros
             UnityEngine.Object.Instantiate(gameInitializationData.slingshotControllerPrefab);
 
             loadingScreenController                            = UnityEngine.Object.Instantiate(gameInitializationData.loadingScreenPrefab);
-            gameFlowManager.DataContext.infoBarController      = UnityEngine.Object.Instantiate(gameInitializationData.infoBarController);
-            gameFlowManager.DataContext.MainCamera             = UnityEngine.Object.Instantiate(gameInitializationData.mainCameraPrefab);
-            gameFlowManager.DataContext.Map                    = UnityEngine.Object.Instantiate(gameInitializationData.mapPrefab);
+            gameContext.infoBarController      = UnityEngine.Object.Instantiate(gameInitializationData.infoBarController);
+            gameContext.MainCamera             = UnityEngine.Object.Instantiate(gameInitializationData.mainCameraPrefab);
+            gameContext.Map                    = UnityEngine.Object.Instantiate(gameInitializationData.mapPrefab);
         }
 
         private async UniTask InitializeObjects()
@@ -78,7 +80,7 @@ namespace BounceHeros
         private async UniTask PrepareGame()
         {
             //게임 초기세팅 플레이어 위치 같은거
-            gameFlowManager.LevelController.Subscribe(gameFlowManager.DataContext.infoBarController);
+            gameContext.LevelController.Subscribe(gameContext.infoBarController);
             await UniTask.Delay(TimeSpan.FromSeconds(3));
         }
 

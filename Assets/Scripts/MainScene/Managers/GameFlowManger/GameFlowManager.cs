@@ -11,18 +11,16 @@ namespace BounceHeros
         private GameFlowStateMachine stateMachine;
         
         [SerializeField] private GameInitializationDataSO gameInitializationData;
-        public GameInitializationDataSO InitializationData => gameInitializationData;
-        public GameDataContext DataContext { get; private set; }    
-        public PauseSystem PauseController { get; private set; }
-        public LevelSystem LevelController { get; private set; }
+        public GameContext Context{ get; private set; }    
        
+        
         public void Initialize()
         {
-            DataContext = new GameDataContext();
-            PauseController = new PauseSystem();
-            LevelController = new LevelSystem(100);
+            Context = new GameContext();
+            Context.PauseController = new PauseSystem();
+            Context.LevelController = new LevelSystem(100);
 
-            stateMachine = new GameFlowStateMachine(this);
+            stateMachine = new GameFlowStateMachine(gameInitializationData, Context);
             
         }
 

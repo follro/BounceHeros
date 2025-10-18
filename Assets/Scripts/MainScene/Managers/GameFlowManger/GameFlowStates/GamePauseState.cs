@@ -6,9 +6,9 @@ namespace BounceHeros
     public class GamePauseState : BaseGameFlowState
     {
         private PauseSystem pauseSystem;
-        public GamePauseState(GameFlowManager gameFlowManager, GameFlowStateMachine gameFlowStateMachine) : base(gameFlowManager, gameFlowStateMachine)
+        public GamePauseState(GameContext gameContext, GameFlowStateMachine gameFlowStateMachine) : base(gameContext, gameFlowStateMachine)
         {
-            pauseSystem = gameFlowManager.PauseController;
+            pauseSystem = gameContext.PauseController;
         }
 
         public override void Enter()

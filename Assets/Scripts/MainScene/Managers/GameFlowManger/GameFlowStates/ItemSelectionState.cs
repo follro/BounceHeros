@@ -3,7 +3,7 @@ namespace BounceHeros
 {
     public class ItemSelectionState : BaseGameFlowState
     {
-        public ItemSelectionState(GameFlowManager gameFlowManager, GameFlowStateMachine gameFlowStateMachine) : base(gameFlowManager, gameFlowStateMachine)
+        public ItemSelectionState(GameContext gameContext, GameFlowStateMachine gameFlowStateMachine) : base(gameContext, gameFlowStateMachine)
         {
         }
 

@@ -6,7 +6,7 @@ namespace BounceHeros
 {
     public class GameEndState : BaseGameFlowState
     {
-        public GameEndState(GameFlowManager gameFlowManager, GameFlowStateMachine gameFlowStateMachine) : base(gameFlowManager, gameFlowStateMachine)
+        public GameEndState(GameContext gameContext, GameFlowStateMachine gameFlowStateMachine) : base(gameContext, gameFlowStateMachine)
         {
         }
     }

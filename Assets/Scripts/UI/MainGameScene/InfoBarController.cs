@@ -11,6 +11,8 @@ namespace BounceHeros
         private Label waveLabel;
         private Label scoreLabel;
 
+        public ILevelNotifier Notifier { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+
         public void OnLifeChanged(int life)
         {
             lifeLabel.text = life.ToString();    
@@ -41,6 +43,9 @@ namespace BounceHeros
 
         }
 
-
+        public void Dispose()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

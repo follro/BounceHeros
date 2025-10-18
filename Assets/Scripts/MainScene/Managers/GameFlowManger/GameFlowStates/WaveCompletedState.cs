@@ -3,7 +3,7 @@ namespace BounceHeros
 {
     public class WaveCompletedState : BaseGameFlowState
     {
-        public WaveCompletedState(GameFlowManager gameFlowManager, GameFlowStateMachine gameFlowStateMachine) : base(gameFlowManager, gameFlowStateMachine)
+        public WaveCompletedState(GameContext gameContext, GameFlowStateMachine gameFlowStateMachine) : base(gameContext, gameFlowStateMachine)
         {
         }
 
