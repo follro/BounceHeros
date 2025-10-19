@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine.EventSystems;
 
 namespace BounceHeros
 {
-    public class GameContext 
+    public class GameContext : IDisposable
     {
         public Camera MainCamera { get; set; }
         
@@ -24,5 +25,9 @@ namespace BounceHeros
         public PauseSystem PauseController { get; set; }
         public LevelSystem LevelController { get; set; }
 
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

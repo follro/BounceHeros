@@ -8,7 +8,6 @@ namespace BounceHeros
 {
     public interface ILevelObserver : IDisposable
     {
-        ILevelNotifier Notifier { get; set; }
         void OnLevelChanged(int newLevel);
     }
 }

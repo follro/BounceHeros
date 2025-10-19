@@ -1,6 +1,7 @@
 
 using Cysharp.Threading.Tasks;
 using System;
+using System.Collections.Generic;
 
 namespace BounceHeros
 {
@@ -15,8 +16,16 @@ namespace BounceHeros
         public override void Enter()
         {
             base.Enter();
+
             levelSystem.NotifyLevelChanged(levelSystem.CurrentLevel + 1);
             stateMachine.RequestTransition(GameFlowStateMachine.GameFlowState.WaveRunning);
         }
+
+        public override void Exit()
+        {
+            base.Exit();
+
+        }
+        
     }
 }

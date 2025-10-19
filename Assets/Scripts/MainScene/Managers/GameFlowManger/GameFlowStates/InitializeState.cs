@@ -79,10 +79,11 @@ namespace BounceHeros
 
         private async UniTask PrepareGame()
         {
-            //게임 초기세팅 플레이어 위치 같은거
-            gameContext.LevelController.Subscribe(gameContext.infoBarController);
+            //게임 초기세팅 플레이어 위치 같은거 
+            //gameContext.LevelController.Subscribe(gameContext.infoBarController);
             await UniTask.Delay(TimeSpan.FromSeconds(3));
         }
+
 
         private async UniTask BeginGame()
         {
