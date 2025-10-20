@@ -8,7 +8,6 @@ namespace BounceHeros
 {
     public class LevelTextUI : MonoBehaviour, ILevelObserver
     {
-        ILevelNotifier ILevelObserver.Notifier { get ; set ; }
 
         [SerializeField] private TextMeshProUGUI waveText;
       
@@ -32,24 +31,12 @@ namespace BounceHeros
             initWaveText = waveText.text;
         }
 
-        private void OnDestroy()
-        {
-            ((IDisposable)this).Dispose();
-        }
 
-        void ILevelObserver.OnLevelChanged(int newLevel)
+        public void OnLevelChanged(int newLevel)
         {
             waveText.text = initWaveText + newLevel.ToString();
         }
 
-        void IDisposable.Dispose()
-        {
-            ILevelNotifier notifier = ((ILevelObserver)this).Notifier;
 
-            if (notifier != null)
-                notifier.Unsubscribe(this);
-
-            ((ILevelObserver)this).Notifier = null;
-        }
     }
 }

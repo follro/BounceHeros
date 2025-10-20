@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace BounceHeros
 {
-    public interface ILevelObserver : IDisposable
+    public interface ILevelObserver 
     {
         void OnLevelChanged(int newLevel);
     }
