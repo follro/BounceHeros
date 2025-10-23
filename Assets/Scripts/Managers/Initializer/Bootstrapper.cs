@@ -1,19 +1,15 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 public abstract class Bootstrapper : MonoBehaviour
 {
-    public abstract void Initialize();
-    public virtual void DependencyInjection() { }
+    public abstract UniTask BindingObjects();
+    public abstract UniTask Initialize();
+    public abstract UniTask InjectDependencies();
 
-    protected virtual void Awake()
+    protected void Start()
     {
         this.gameObject.name = $"[{this.GetType().Name}]";
-        Initialize();
-    }
-
-    protected virtual void Start()
-    {
-        DependencyInjection();
     }
 
 }
