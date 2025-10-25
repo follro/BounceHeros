@@ -13,7 +13,7 @@ public static class GlobalServiceLocator
         if (services.TryGetValue(type, out object obj))
             return obj as T;
 
-        throw new ArgumentException($"ServiceManager.Get: Service of type {type.FullName} already registered");
+        throw new ArgumentException($"ServiceManager.Get: Service of type {type.FullName} is NOT registered.");
     }
 
     public static bool TryGet<T>(out T service) where T : class
@@ -40,5 +40,10 @@ public static class GlobalServiceLocator
     public static void Unregister<T> () where T : class
     {
         services.Remove(typeof(T)); 
+    }
+
+    public static void Initialize()
+    {
+        services.Clear();
     }
 }

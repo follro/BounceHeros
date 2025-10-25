@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-public interface IResourceManager 
+public interface IAssetLoadManager 
 {
     public UniTask<T> LoadAsync<T>(string key) where T : Object;
     public UniTask<T> LoadAsync<T>(AssetReference assetReference) where T : Object;

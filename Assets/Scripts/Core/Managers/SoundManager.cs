@@ -15,7 +15,7 @@ public class SoundManager : MonoBehaviour
     [Header("SFX")]
     public AudioClip sfxClips;
 
-    public void Initialize(IResourceManager resourceManager)
+    public void Initialize(AssetLoadManager resourceManager)
     {
 
     }
