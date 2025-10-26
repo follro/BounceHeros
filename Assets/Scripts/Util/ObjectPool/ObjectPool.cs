@@ -7,7 +7,7 @@ namespace BounceHeros
     public class ObjectPool<TPoolableObject> where TPoolableObject : PoolableObject
     {
         private const int ExpansionDivisor = 2;         
-        private const int MinimumExpansionAmount = 10;  
+        private int minimumExpansionAmount = 1;  
 
         private readonly TPoolableObject prefab;
         private Transform parentObject;
@@ -17,7 +17,7 @@ namespace BounceHeros
 
         private string poolName;
 
-        public ObjectPool(TPoolableObject prefab, int poolSize, Transform parentObject)
+        public ObjectPool(TPoolableObject prefab, int poolSize, Transform parentObject, int minimumExpansionAmount = 1)
         {
             poolName = typeof(TPoolableObject).Name;
             if (prefab == null)
@@ -27,7 +27,7 @@ namespace BounceHeros
             }
 
             currentPoolSize = 0;
-
+            this.minimumExpansionAmount = minimumExpansionAmount;
             this.parentObject =  parentObject;
 
             pool = new Queue<TPoolableObject>();
@@ -59,7 +59,7 @@ namespace BounceHeros
             TPoolableObject obj = null;
             if (!pool.TryDequeue(out obj))
             {
-                int expansionAmount = Mathf.Max(currentPoolSize / ExpansionDivisor, MinimumExpansionAmount);
+                int expansionAmount = Mathf.Max(currentPoolSize / ExpansionDivisor, minimumExpansionAmount);
 
                 Debug.LogWarning(
                     $"Pool({poolName}): 풀이 비었습니다. 현재 총 용량: {currentPoolSize}. " +

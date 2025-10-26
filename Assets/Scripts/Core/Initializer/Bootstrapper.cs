@@ -9,6 +9,9 @@ public class Bootstrapper : MonoBehaviour
     public static string sceneToLoadAfterBoot = null;
     private static bool hasInitialized = false;
 
+    [Header("Monobehavior Systems")]
+    [SerializeField] private SoundManager soundManager;
+
     [Header("∑ŒµÂ«“ ±‚∫ª æ¿")]
     [SerializeField] private string defaultNextSceneName = "MainMenu";
 
@@ -35,13 +38,18 @@ public class Bootstrapper : MonoBehaviour
         await LoadNextSceneAsync();
     }
 
-    private void RegisterMonoBehaviourSystem<TInterface, TImplementation>()
+    private void RegisterMonoBehaviourSystem<TInterface, TImplementation>(TImplementation prefab)
         where TInterface : class
         where TImplementation : MonoBehaviour, TInterface 
     {
-        GameObject obj = new GameObject(typeof(TImplementation).Name);
-        obj.transform.parent = this.transform;
-        TImplementation newSystem = obj.AddComponent<TImplementation>();
+        /* GameObject obj = new GameObject(typeof(TImplementation).Name);
+         obj.transform.parent = this.transform;
+         TImplementation newSystem = obj.AddComponent<TImplementation>();
+         GlobalServiceLocator.Register<TInterface>(newSystem);*/
+        TImplementation newSystem = Instantiate(prefab, this.transform);
+
+        newSystem.name = typeof(TImplementation).Name;
+
         GlobalServiceLocator.Register<TInterface>(newSystem);
     }
 
@@ -57,6 +65,7 @@ public class Bootstrapper : MonoBehaviour
     private void ServiceSetting()
     {
         RegisterPocoSystem<IAssetLoadManager, AssetLoadManager>();
+        RegisterMonoBehaviourSystem<ISoundManager, SoundManager>(soundManager);
     }
 
     private async UniTask LoadNextSceneAsync()
@@ -72,7 +81,7 @@ public class Bootstrapper : MonoBehaviour
         {
             sceneToLoad = defaultNextSceneName;
         }
-
+        Debug.Log("¿Ãµøæ¿: " +  sceneToLoad);  
         await SceneManager.LoadSceneAsync(sceneToLoad);
 
     }
