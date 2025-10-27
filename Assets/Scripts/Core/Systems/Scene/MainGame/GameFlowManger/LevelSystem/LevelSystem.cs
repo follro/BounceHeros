@@ -15,6 +15,8 @@ namespace BounceHeros
         public int CurrentLevel { get; private set; }
         public int MaxLevel { get; private set; }
 
+        public bool IsInitialized { get; private set; }
+
         public LevelSystem(int maxLevel)
         {
             MaxLevel = maxLevel;
@@ -23,6 +25,7 @@ namespace BounceHeros
         public void Initialize()
         {
             CurrentLevel = 0;
+            IsInitialized = true;
         }
 
         #region levelNotifier

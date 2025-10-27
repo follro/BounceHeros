@@ -15,16 +15,18 @@ namespace BounceHeros
         
         private Queue<TPoolableObject> pool;
 
-        private string poolName;
+        private readonly string poolName;
 
         public ObjectPool(TPoolableObject prefab, int poolSize, Transform parentObject, int minimumExpansionAmount = 1)
         {
             poolName = typeof(TPoolableObject).Name;
+            this.prefab = prefab;   
             if (prefab == null)
             {
-                Debug.LogError($"Pool({poolName}): prefab is null. 풀 생성 불가");
+                Debug.LogError($"Pool({poolName}): prefab이 NULL입니다!");
                 return;
             }
+
 
             currentPoolSize = 0;
             this.minimumExpansionAmount = minimumExpansionAmount;
@@ -46,6 +48,7 @@ namespace BounceHeros
             for (int i = 1; i <= objectsNum; i++)
             {
                 TPoolableObject createdObj = Object.Instantiate(prefab, parentObject);
+                createdObj.transform.SetParent(parentObject);
                 createdObj.InitializeFromPool(typeof(TPoolableObject).Name + (currentPoolSize + i).ToString());
                 createdObj.gameObject.SetActive(false);
                 pool.Enqueue(createdObj);

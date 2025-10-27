@@ -28,7 +28,8 @@ public class Bootstrapper : MonoBehaviour
         DontDestroyOnLoad(gameObject); 
 
         GlobalServiceLocator.Initialize();
-        ServiceSetting();
+        RegisterServices();
+        InitializeServices();
     }
 
     private async void Start()
@@ -46,6 +47,7 @@ public class Bootstrapper : MonoBehaviour
          obj.transform.parent = this.transform;
          TImplementation newSystem = obj.AddComponent<TImplementation>();
          GlobalServiceLocator.Register<TInterface>(newSystem);*/
+
         TImplementation newSystem = Instantiate(prefab, this.transform);
 
         newSystem.name = typeof(TImplementation).Name;
@@ -61,11 +63,15 @@ public class Bootstrapper : MonoBehaviour
         GlobalServiceLocator.Register<TInterface>(newSystem);
     }
 
-
-    private void ServiceSetting()
+    private void RegisterServices()
     {
         RegisterPocoSystem<IAssetLoadManager, AssetLoadManager>();
         RegisterMonoBehaviourSystem<ISoundManager, SoundManager>(soundManager);
+    }
+    private void InitializeServices()
+    {
+        GlobalServiceLocator.Get<IAssetLoadManager>().Initialize();
+        GlobalServiceLocator.Get<ISoundManager>().Initialize();
     }
 
     private async UniTask LoadNextSceneAsync()
@@ -85,4 +91,5 @@ public class Bootstrapper : MonoBehaviour
         await SceneManager.LoadSceneAsync(sceneToLoad);
 
     }
+
 }

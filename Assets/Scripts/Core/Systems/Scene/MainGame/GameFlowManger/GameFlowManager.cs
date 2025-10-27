@@ -11,9 +11,10 @@ namespace BounceHeros
         private GameFlowStateMachine stateMachine;
         
         [SerializeField] private GameInitializationDataSO gameInitializationData;
-        public GameContext Context{ get; private set; }    
-       
-        
+        public GameContext Context{ get; private set; }
+
+        public bool IsInitialized { get; private set; }
+
         public void Initialize()
         {
             Context = new GameContext();
@@ -21,7 +22,7 @@ namespace BounceHeros
             Context.LevelController = new LevelSystem(100);
 
             stateMachine = new GameFlowStateMachine(gameInitializationData, Context);
-            
+            IsInitialized = true;
         }
 
         private void Awake()

@@ -6,6 +6,13 @@ using UnityEngine.AddressableAssets;
 
 public class AssetLoadManager : IAssetLoadManager
 {
+    public bool IsInitialized { get; private set; }
+
+    public void Initialize()
+    {
+       
+    }
+
     public UniTask<T> LoadAsync<T>(string key) where T : Object
     {
         throw new System.NotImplementedException();
