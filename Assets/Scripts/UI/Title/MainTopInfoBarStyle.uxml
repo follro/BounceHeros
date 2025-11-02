@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scripts/UI/Title/MainTopInfoBar.uss?fileID=7433441132597879392&amp;guid=6c3d9a90439567a45a1018a25114f399&amp;type=3#MainTopInfoBar" />
+    <ui:VisualElement name="Panel" class="root">
+        <ui:VisualElement name="CoinInfoContainer" class="coin-info">
+            <ui:Label tabindex="-1" text="&#10;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CoinInfoImage" class="coin-info-image" />
+            <ui:VisualElement name="CoinInfoValue" class="coin-info-value default-text">
+                <ui:Label tabindex="-1" text="10000000000000000000000000000000000" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CoinInfoValueText" class="coin-info-value-text" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Button text="Setting" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SettingButton" class="setting-button default-text" />
+    </ui:VisualElement>
+</ui:UXML>
