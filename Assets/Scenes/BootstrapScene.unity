@@ -135,6 +135,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bootstrapper
       objectReference: {fileID: 0}
+    - target: {fileID: 607560830612622840, guid: 694dc2415152e0649badf6e1a9bf78c1,
+        type: 3}
+      propertyPath: defaultNextSceneName
+      value: Title
+      objectReference: {fileID: 0}
     - target: {fileID: 8862025949941837026, guid: 694dc2415152e0649badf6e1a9bf78c1,
         type: 3}
       propertyPath: m_LocalPosition.x

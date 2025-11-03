@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scripts/UI/Title/MainTopInfoBar.uss?fileID=7433441132597879392&amp;guid=6c3d9a90439567a45a1018a25114f399&amp;type=3#MainTopInfoBar" />
+    <ui:VisualElement name="Panel" class="top-info-bar">
+        <ui:VisualElement name="CoinInfoContainer" style="flex-direction: row; height: 100%; align-self: auto; align-items: center; width: 40%;">
+            <ui:Label tabindex="-1" text="&#10;" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CoinInfoImage" class="info-size" style="background-image: url(&quot;project://database/Assets/Sprites/UI/Coins.png?fileID=-271540316&amp;guid=111133ba6da2dd149b4047b2ec47775d&amp;type=3#Coins_6&quot;);" />
+            <ui:VisualElement name="CoinInfoValue" style="width: 100%; align-items: center; height: 80%; justify-content: center;">
+                <ui:Label tabindex="-1" text="10000000000000000000000000000000000" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CoinInfoValueText" class="value-text default-text" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; background-color: rgba(138, 57, 57, 0.81); height: 100%;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Button text="Setting" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SettingButton" class="setting-button default-text info-size" />
+    </ui:VisualElement>
+</ui:UXML>

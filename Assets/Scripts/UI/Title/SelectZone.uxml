@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scripts/UI/Title/SelectUIStyle.uss?fileID=7433441132597879392&amp;guid=c2d9de0dbb4efec41849294e7f4d7f7c&amp;type=3#SelectUIStyle" />
+    <ui:VisualElement name="SelectZoneContainer" style="background-color: rgba(0, 0, 0, 0.53); width: 500px; height: 800px; justify-content: space-around; align-items: center; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; align-self: center;">
+        <ui:Button text="Play" parse-escape-sequences="true" display-tooltip-when-elided="true" name="PlayButton" class="select-button" />
+        <ui:Button text="Skills" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SkillsButton" class="select-button" />
+        <ui:Button text="Equip" parse-escape-sequences="true" display-tooltip-when-elided="true" name="EquipButton" class="select-button" />
+        <ui:Button text="Info" parse-escape-sequences="true" display-tooltip-when-elided="true" name="InfoButton" enable-rich-text="true" class="select-button" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -48,7 +48,6 @@ namespace BounceHeros
         {
             UnityEngine.Object.Instantiate(gameInitializationData.directionalLightPrefab); 
             UnityEngine.Object.Instantiate(gameInitializationData.eventSystemPrefab);
-            UnityEngine.Object.Instantiate(gameInitializationData.mapColliderPrefab);
             UnityEngine.Object.Instantiate(gameInitializationData.slingshotControllerPrefab);
 
             loadingScreenController                            = UnityEngine.Object.Instantiate(gameInitializationData.loadingScreenPrefab);

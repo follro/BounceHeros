@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="InfoBarStyle" src="project://database/Assets/Scripts/UI/Title/InfoBar.uxml?fileID=9197481963319205126&amp;guid=73c3e15469bee874ca7eaa9064f913f3&amp;type=3#InfoBar" />
+    <ui:Template name="SelectZone" src="project://database/Assets/Scripts/UI/Title/SelectZone.uxml?fileID=9197481963319205126&amp;guid=07c36f4a7737d124d850bedaf935d623&amp;type=3#SelectZone" />
+    <ui:VisualElement name="MainMenuContainer" style="flex-grow: 1; width: 100%; height: 100%; background-image: url(&quot;project://database/Assets/Sprites/UnityGameTestTitleImage.png?fileID=2800000&amp;guid=259406ccb5e77f14e9cd09e4c835000c&amp;type=3#UnityGameTestTitleImage&quot;);">
+        <ui:Instance template="InfoBarStyle" name="MainTopInfoBarStyle" />
+        <ui:VisualElement name="MainZone" style="flex-grow: 1; align-items: center; justify-content: center; flex-direction: row;">
+            <ui:VisualElement style="flex-grow: 1;" />
+            <ui:Instance template="SelectZone" name="SelectZone" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

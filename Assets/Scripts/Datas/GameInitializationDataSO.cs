@@ -16,7 +16,6 @@ namespace BounceHeros
 
         [Header("Map")]
         public GameObject mapPrefab;
-        public GameObject mapColliderPrefab;
 
         [Header("UI")]
         public LoadingScreenController loadingScreenPrefab;

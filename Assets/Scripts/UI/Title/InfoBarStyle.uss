@@ -1,0 +1,31 @@
+.top-info-bar {
+    width: 100%;
+    height: 120px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.info-size {
+    width : 96px;
+    height: 96px;
+    width: 96px;
+    height: 96px;
+    -unity-text-align: middle-center;
+    margin-top: 4px;
+    margin-right: 8px;
+    margin-bottom: 4px;
+    margin-left: 8px;
+}
+
+.value-text {
+    -unity-text-align: middle-center;
+    text-overflow: clip;
+    flex-wrap: nowrap;
+    white-space: normal;
+}
+
+.default-text {
+    font-size: 25px;
+    color: rgb(255, 255, 255);
+}
