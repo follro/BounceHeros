@@ -1,0 +1,21 @@
+#SettingsSlider Label {
+    font-size: 35px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-left;
+}
+
+#SettingsSlider {
+    height: 200px;
+    justify-content: flex-start;
+    align-self: auto;
+    background-color: rgba(183, 183, 183, 0.35);
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    align-items: center;
+}

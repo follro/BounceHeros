@@ -1,0 +1,13 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scripts/UI/Title/SettingUIStyle.uss?fileID=7433441132597879392&amp;guid=3005962e6dde1d34e96edba285bbca0f&amp;type=3#SettingUIStyle" />
+    <ui:VisualElement name="Panel" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.53); align-items: center; justify-content: center; align-self: auto;">
+        <ui:VisualElement name="SettingContainer" style="width: 90%; height: 1000px; border-top-left-radius: 50px; border-top-right-radius: 50px; border-bottom-right-radius: 50px; border-bottom-left-radius: 50px; background-color: rgb(117, 117, 117); justify-content: flex-start;">
+            <ui:Label tabindex="-1" text="Sound" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Sound" style="-unity-text-align: upper-center; font-size: 50px; -unity-font-style: bold; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;" />
+            <ui:VisualElement name="SettingValueContainer" style="flex-grow: 1; justify-content: center; align-self: auto; flex-shrink: 0;">
+                <ui:Slider label="Master" high-value="100" name="SettingsSlider" class="default-slider" />
+                <ui:Slider label="BGM" high-value="100" name="SettingsSlider" class="default-slider" />
+                <ui:Slider label="SFX" high-value="100" name="SettingsSlider" class="default-slider" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
