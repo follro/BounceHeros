@@ -10,5 +10,5 @@ public class AudioEventSO : ScriptableObject
     [Range(0.1f, 3f)]
     public float pitch = 1f;
     public bool isLooping = false;
-    public AudioMixerGroup mixerGroup;
+    public SoundManager.AudioType audioType;
 }

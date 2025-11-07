@@ -2,13 +2,14 @@ using BounceHeros;
 using UnityEngine;
 using Cysharp.Threading.Tasks; 
 using System.Threading;      
-using System;                
+using System;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(AudioSource))]
 public class PooledAudioSource : PoolableObject
 {
     private AudioSource audioSource;
-    private CancellationTokenSource autoReturnCts; 
+    private CancellationTokenSource autoReturnCts;
 
     private void Awake()
     {
@@ -16,19 +17,20 @@ public class PooledAudioSource : PoolableObject
         audioSource.playOnAwake = false;
     }
 
-    public void Play(AudioEventSO audioEvent)
+    public void Play(AudioEventSO audioEvent, AudioMixerGroup audioMixerGroup)
     {
-        if (autoReturnCts != null)
+        if (audioEvent == null || audioEvent.clip == null)
         {
-            autoReturnCts.Cancel();
-            autoReturnCts.Dispose();
-            autoReturnCts = null;
+            Debug.LogWarning("Invalid audio event or clip");
+            return;
         }
+
+        CleanupCancellationToken();
 
         audioSource.clip = audioEvent.clip;
         audioSource.volume = audioEvent.volume;
         audioSource.pitch = audioEvent.pitch;
-        audioSource.outputAudioMixerGroup = audioEvent.mixerGroup;
+        audioSource.outputAudioMixerGroup = audioMixerGroup;
         audioSource.loop = audioEvent.isLooping;
 
         audioSource.Play();
@@ -48,27 +50,26 @@ public class PooledAudioSource : PoolableObject
         try
         {
             await UniTask.Delay(TimeSpan.FromSeconds(delay), cancellationToken: token);
-
-            OnReturnToPool();
+            if (!token.IsCancellationRequested) 
+            {
+                OnReturnToPool();
+            }
         }
         catch (OperationCanceledException)
         {
         }
+        catch (Exception ex)
+        {
+            Debug.LogError($"AutoReturn failed: {ex}");
+        }
     }
 
-    public void StopAndReturn()
+    /*public void StopAndReturn()
     {
-        audioSource.Stop();
-
-        if (autoReturnCts != null)
-        {
-            autoReturnCts.Cancel();
-            autoReturnCts.Dispose();
-            autoReturnCts = null;
-        }
+        CleanupCancellationToken();
 
         OnReturnToPool();
-    }
+    }*/
 
     public override void OnReturnToPool()
     {
@@ -76,13 +77,18 @@ public class PooledAudioSource : PoolableObject
         audioSource.clip = null;
         audioSource.loop = false;
 
+        CleanupCancellationToken();
+
+        base.OnReturnToPool();
+    }
+
+    private void CleanupCancellationToken()
+    {
         if (autoReturnCts != null)
         {
             autoReturnCts.Cancel();
             autoReturnCts.Dispose();
             autoReturnCts = null;
         }
-
-        base.OnReturnToPool();
     }
 }

@@ -9,6 +9,7 @@ namespace BounceHeros
     public class MainMenuUI : MonoBehaviour
     {
         Button playButton;
+        Button settingButton;
 
         private void OnEnable()
         {
@@ -16,8 +17,9 @@ namespace BounceHeros
             var root = uiDocument.rootVisualElement;
 
             playButton = root.Q<Button>("PlayButton");
-
             playButton.clicked += LoadMainScene;
+            
+            
         }
 
         private void OnDisable()
