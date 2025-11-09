@@ -10,6 +10,8 @@ namespace BounceHeros
     {
         Button playButton;
         Button settingButton;
+        public GameObject settingsUI;
+
 
         private void OnEnable()
         {
@@ -18,8 +20,9 @@ namespace BounceHeros
 
             playButton = root.Q<Button>("PlayButton");
             playButton.clicked += LoadMainScene;
-            
-            
+            settingButton = root.Q<Button>("SettingButton");
+            settingButton.clicked += SettingButtonEvent;
+
         }
 
         private void OnDisable()
@@ -28,11 +31,21 @@ namespace BounceHeros
             {
                 playButton.clicked -= LoadMainScene;
             }
+
+            if (settingButton != null)
+            { settingButton.clicked -= SettingButtonEvent; }
         }
 
         private void LoadMainScene()
         {
             SceneManager.LoadSceneAsync("MainScene");
+        }
+
+        private void SettingButtonEvent()
+        {
+            if(settingsUI.activeSelf)
+                settingsUI.SetActive(false);
+            else settingsUI.SetActive(true);
         }
     }
 }

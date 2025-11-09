@@ -11,7 +11,9 @@ public class SoundManager : MonoBehaviour, ISoundManager
     {
         Master,
         SFX,
-        BGM
+        BGM,
+
+        End
     }
     [Header("AudioMixer")]
     [SerializeField] private AudioMixer audioMixer;
