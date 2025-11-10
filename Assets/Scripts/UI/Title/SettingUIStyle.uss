@@ -92,3 +92,21 @@
     padding-bottom: 0;
     padding-left: 0;
 }
+
+.settings-button {
+    width: 100%;
+    align-items: auto;
+    justify-content: flex-start;
+    align-self: center;
+    font-size: 40px;
+    -unity-font-style: bold;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    height: 70px;
+}
+
+.settings-button:hover {
+    background-color: rgba(255, 211, 0, 0.87);
+}

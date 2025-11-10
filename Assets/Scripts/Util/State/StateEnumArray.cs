@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace HakSeung.Util
 {
+
     public class StateEnumArray<TState, TEnum>
         where TState : IState
         where TEnum : struct, Enum 

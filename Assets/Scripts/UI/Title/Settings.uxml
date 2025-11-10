@@ -3,15 +3,19 @@
     <ui:VisualElement name="Panel" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.53); align-items: center; justify-content: center; align-self: auto;">
         <ui:VisualElement name="SettingContainer" style="width: 90%; height: 1000px; border-top-left-radius: 50px; border-top-right-radius: 50px; border-bottom-right-radius: 50px; border-bottom-left-radius: 50px; background-color: rgb(117, 117, 117); justify-content: flex-start;">
             <ui:Label tabindex="-1" text="Sound" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Sound" style="-unity-text-align: upper-center; font-size: 50px; -unity-font-style: bold; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;" />
-            <ui:VisualElement name="VisualElement" style="flex-grow: 1; justify-content: flex-start; align-self: auto; flex-shrink: 0;">
-                <ui:VisualElement name="Master" style="flex-grow: 1; justify-content: center;">
+            <ui:VisualElement name="Settings" style="justify-content: space-around; height: 100%;">
+                <ui:VisualElement name="Master">
                     <ui:Slider label="Master" high-value="100" name="SettingsSlider" low-value="0" class="default-slider" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
                 </ui:VisualElement>
-                <ui:VisualElement name="BGM" style="flex-grow: 1; justify-content: center;">
+                <ui:VisualElement name="BGM">
                     <ui:Slider label="BGM" high-value="100" name="SettingsSlider" class="default-slider" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
                 </ui:VisualElement>
-                <ui:VisualElement name="SFX" style="flex-grow: 1; justify-content: center;">
+                <ui:VisualElement name="SFX">
                     <ui:Slider label="SFX" high-value="100" name="SettingsSlider" class="default-slider" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="Buttons" style="justify-content: space-around; width: 50%; height: 20%; align-self: center;">
+                    <ui:Button text="Close" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Close" class="settings-button" />
+                    <ui:Button text="Title" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" class="settings-button" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
