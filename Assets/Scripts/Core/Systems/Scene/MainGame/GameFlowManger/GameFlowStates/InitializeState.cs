@@ -46,13 +46,10 @@ namespace BounceHeros
 
         private void BindingObject(GameInitializationDataSO gameInitializationData)
         {
-            UnityEngine.Object.Instantiate(gameInitializationData.directionalLightPrefab); 
-            UnityEngine.Object.Instantiate(gameInitializationData.eventSystemPrefab);
             UnityEngine.Object.Instantiate(gameInitializationData.slingshotControllerPrefab);
 
-            loadingScreenController                            = UnityEngine.Object.Instantiate(gameInitializationData.loadingScreenPrefab);
+            loadingScreenController            = UnityEngine.Object.Instantiate(gameInitializationData.loadingScreenPrefab);
             gameContext.infoBarController      = UnityEngine.Object.Instantiate(gameInitializationData.infoBarController);
-            gameContext.MainCamera             = UnityEngine.Object.Instantiate(gameInitializationData.mainCameraPrefab);
             gameContext.Map                    = UnityEngine.Object.Instantiate(gameInitializationData.mapPrefab);
         }
 

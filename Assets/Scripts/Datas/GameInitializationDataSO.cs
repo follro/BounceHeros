@@ -9,10 +9,10 @@ namespace BounceHeros
     [CreateAssetMenu(fileName = "GameInitializationData", menuName = "ScriptableObjects/Game Initialization Data")]
     public class GameInitializationDataSO : ScriptableObject
     {
-        [Header("Core Systems")]
+       /* [Header("Core Systems")]
         public Camera mainCameraPrefab;
         public Light directionalLightPrefab;
-        public EventSystem eventSystemPrefab;
+        public EventSystem eventSystemPrefab;*/
 
         [Header("Map")]
         public GameObject mapPrefab;

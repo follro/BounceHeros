@@ -4,18 +4,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-namespace BounceHeros
+namespace BounceHeros.Enemy
 {
+    public enum EnemyState
+    {
+        Idle,
+        
+
+    }
+
     public class BaseEnemy : Character
     {
         [SerializeField] EnemyType enemyType;
+        //원하는 상태를 추가해서 사용할 수 있도록 만든 상태 패턴 BaseEnemy에서는 공통적인 것만 할당하고 하위 클래스에서 원하는 클래스를 할당시키기
+
+
         private void Awake()
         {
             hp = MaxHP;
-            OnHitEvent += (damage) => { spriteRenderer.DOColor(Color.red, 0.2f).SetLoops(2, LoopType.Yoyo); };
-            OnHitEvent += (damage) => { if (HP <= 0) gameObject.SetActive(false); };
+            //OnHitEvent += (damage) => { if (HP <= 0) gameObject.SetActive(false); };
         }
-
 
 
 
